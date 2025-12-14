@@ -422,7 +422,7 @@ const projectData = {
     }
 };
 
-// Project Modal Functionality
+// Project Modal Functionality - Triggered on Hover
 const modal = document.getElementById('projectModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalImage = document.getElementById('modalImage');
@@ -431,63 +431,94 @@ const modalTech = document.getElementById('modalTech');
 const modalLinks = document.getElementById('modalLinks');
 const modalClose = document.querySelector('.modal-close');
 
-// Add click event listeners to project blocks
+let hoverTimeout;
+let hideTimeout;
+
+// Add hover event listeners to project blocks
 document.querySelectorAll('.project-block').forEach(block => {
-    block.addEventListener('click', () => {
+    block.addEventListener('mouseenter', () => {
         const projectId = block.getAttribute('data-project');
         const project = projectData[projectId];
         
         if (project) {
-            // Populate modal content
-            modalTitle.textContent = project.title;
-            modalImage.src = block.querySelector('img').src;
-            modalImage.alt = project.title;
-            modalDescription.textContent = project.description;
+            // Clear any existing timeouts
+            clearTimeout(hoverTimeout);
+            clearTimeout(hideTimeout);
             
-            // Clear and populate tech tags
-            modalTech.innerHTML = '';
-            project.tech.forEach(tech => {
-                const tag = document.createElement('span');
-                tag.className = 'tech-tag';
-                tag.textContent = tech;
-                modalTech.appendChild(tag);
-            });
-            
-            // Clear and populate links
-            modalLinks.innerHTML = '';
-            project.links.forEach(link => {
-                const btn = document.createElement('a');
-                btn.href = link.url;
-                btn.target = '_blank';
-                btn.className = 'project-btn';
-                btn.innerHTML = `<i class="${link.icon}"></i> ${link.text}`;
-                modalLinks.appendChild(btn);
-            });
-            
-            // Show modal
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            // Small delay before showing modal for better UX
+            hoverTimeout = setTimeout(() => {
+                // Populate modal content
+                modalTitle.textContent = project.title;
+                modalImage.src = block.querySelector('img').src;
+                modalImage.alt = project.title;
+                modalDescription.textContent = project.description;
+                
+                // Clear and populate tech tags
+                modalTech.innerHTML = '';
+                project.tech.forEach(tech => {
+                    const tag = document.createElement('span');
+                    tag.className = 'tech-tag';
+                    tag.textContent = tech;
+                    modalTech.appendChild(tag);
+                });
+                
+                // Clear and populate links
+                modalLinks.innerHTML = '';
+                project.links.forEach(link => {
+                    const btn = document.createElement('a');
+                    btn.href = link.url;
+                    btn.target = '_blank';
+                    btn.className = 'project-btn';
+                    btn.innerHTML = `<i class="${link.icon}"></i> ${link.text}`;
+                    modalLinks.appendChild(btn);
+                });
+                
+                // Show modal
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }, 300); // 300ms delay before showing
         }
+    });
+    
+    block.addEventListener('mouseleave', () => {
+        // Clear show timeout if mouse leaves before delay
+        clearTimeout(hoverTimeout);
+        
+        // Delay hiding modal to allow mouse to move to modal
+        hideTimeout = setTimeout(() => {
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }, 200);
     });
 });
 
-// Close modal functionality
-modalClose.addEventListener('click', () => {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-});
+// Keep modal open when hovering over it
+if (modal) {
+    modal.addEventListener('mouseenter', () => {
+        clearTimeout(hideTimeout);
+    });
+    
+    modal.addEventListener('mouseleave', () => {
+        hideTimeout = setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }, 200);
+    });
+}
 
-// Close modal when clicking outside
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
+// Close modal functionality
+if (modalClose) {
+    modalClose.addEventListener('click', () => {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
-    }
-});
+    });
+}
 
 // Close modal with Escape key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.style.display === 'block') {
+    if (e.key === 'Escape' && modal && modal.style.display === 'block') {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
