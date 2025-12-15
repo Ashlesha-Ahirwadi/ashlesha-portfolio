@@ -329,7 +329,7 @@ const projectData = {
         description: 'Practicum Project | Northwestern Medicine – Abazeed Lab\n\n• Developed a production-ready 3D tumor detection system using deep learning for radiation therapy planning from lung CT scans\n• Engineered a multi-model ensemble (YOLO3D, UNETR, VNet) achieving 75.6% sensitivity and 69.6% AP@0.3 (VNet)\n• Introduced Complete IoU (CIoU) loss and anisotropic anchor designs tailored for medical precision\n• Accelerated training on H100 GPUs using mixed-precision, 16+ workers, and PyTorch Lightning with MONAI transforms',
         tech: ['Deep Learning', '3D Computer Vision', 'PyTorch', 'MONAI', 'YOLO3D', 'UNETR', 'VNet', 'Medical AI'],
         links: [
-            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://linkedin.com/in/ashlesha-ahirwadi' }
+            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://www.linkedin.com/posts/ashlesha-ahirwadi_ai-advances-in-cancer-care-activity-7406413524303900672-t03W?utm_source=share&utm_medium=member_desktop&rcm=ACoAAB_E06QBOEX78r8zu-z-Zr_ZM48xqlDTiYQ' }
         ]
     },
     'storyteller-ai': {
@@ -337,7 +337,7 @@ const projectData = {
         description: '• Fine-tuned GPT-2 (HuggingFace) on r/WritingPrompts and fairy tale datasets to generate coherent 100–200 word stories from user prompts\n• Built a Streamlit web app enabling real-time prompt input, story generation, and audio narration using a Text-to-Speech engine\n• Enabled multimodal interaction with embedded playback and downloadable text/audio (.mp3) outputs\n• Implemented full inference pipeline including input preprocessing, model decoding, and integrated TTS synthesis\n• Demonstrated potential for AI in creative writing, edutainment, and accessibility applications',
         tech: ['GPT-2', 'HuggingFace', 'Streamlit', 'Text-to-Speech', 'NLP', 'Fine-tuning', 'Multimodal AI'],
         links: [
-            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://linkedin.com/in/ashlesha-ahirwadi' }
+            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://github.com/Ashlesha-Ahirwadi/StoryTeller-AI-Personalized-Story-Generator.git' }
         ]
     },
     'image-restoration': {
@@ -345,7 +345,7 @@ const projectData = {
         description: '• Built an integrated pipeline to restore degraded images using denoising, super-resolution, and colorization stages\n• Implemented a Denoising Autoencoder (DAE) to remove noise and scratches from historical and low-quality images\n• Applied ESRGAN (Enhanced Super-Resolution GAN) to achieve 4× image upscaling with preserved fine detail\n• Integrated DeOldify for grayscale image colorization using conditional GANs\n• Developed an interactive Gradio-based web interface allowing real-time image restoration with user uploads\n• Leveraged public datasets (DIV2K, ImageNet, NYPL) to train and test the unified restoration system',
         tech: ['GANs', 'ESRGAN', 'DeOldify', 'Autoencoders', 'Gradio', 'Computer Vision', 'Image Processing'],
         links: [
-            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://linkedin.com/in/ashlesha-ahirwadi' }
+            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://github.com/Ashlesha-Ahirwadi/AI-Image-Restoration.git' }
         ]
     },
     'fake-review-detection': {
@@ -353,7 +353,7 @@ const projectData = {
         description: '• Built and evaluated multiple models to classify Amazon reviews as human-written or AI-generated\n• Achieved 98.2% F1 Score with fine-tuned BERT-base, outperforming a TF-IDF + Logistic Regression baseline\n• Fine-tuned Qwen2.5 (3B) using LoRA, achieving 98.6% accuracy, zero parse failures, and high precision/recall\n• Engineered content-based features and performed linguistic analysis to differentiate synthetic review patterns\n• Demonstrated application of prompt tuning vs. full fine-tuning in a high-impact real-world classification task',
         tech: ['BERT', 'Qwen2.5', 'LoRA', 'NLP', 'Classification', 'TF-IDF', 'Fine-tuning'],
         links: [
-            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://linkedin.com/in/ashlesha-ahirwadi' }
+            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://github.com/Ashlesha-Ahirwadi/Amazon-Review-Human-AI-Detection.git' }
         ]
     },
     'virtual-gym-trainer': {
@@ -361,7 +361,7 @@ const projectData = {
         description: '• Developed a real-time virtual workout assistant using MediaPipe pose estimation and OpenCV for upper-body posture tracking\n• Computed joint angles via vector geometry and used a finite state machine to ensure accurate repetition counting across exercises\n• Achieved >90% rep-counting accuracy with <0.2 sec latency under optimal conditions, validated against human-observed results\n• Delivered multimodal feedback (audio via Pygame + visual overlays) to enhance user engagement and correct posture\n• Designed the system to run on standard webcams with no specialised hardware, promoting accessibility for home fitness and rehabilitation use\n• Proposed future enhancements including form correction models, mobile integration, and adaptive coaching via reinforcement learning',
         tech: ['MediaPipe', 'OpenCV', 'Computer Vision', 'Pygame', 'Real-time Processing', 'Pose Estimation'],
         links: [
-            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://linkedin.com/in/ashlesha-ahirwadi' }
+            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://www.youtube.com/watch?v=HBZLyfzbDvQ' }
         ]
     },
     'business-artist-connector': {
@@ -369,7 +369,7 @@ const projectData = {
         description: '• Led user research (interviews, surveys, testing) to identify pain points of 50+ local businesses/artists, informing a user-centered app prototype\n• Designed and prototyped AI-driven features (style/budget/location matching, in-app collaboration tools) using Figma, streamlining creative partnerships\n• Delivered a functional prototype praised for usability and scalability, presented to faculty and industry stakeholders',
         tech: ['User Research', 'Figma', 'Prototyping', 'AI Matching', 'UX/UI Design', 'Collaboration Tools'],
         links: [
-            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://linkedin.com/in/ashlesha-ahirwadi' }
+            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://www.linkedin.com/posts/ashlesha-ahirwadi_hci-uxdesign-communitybuilding-activity-7314029006268305408-BK8O?utm_source=share&utm_medium=member_desktop&rcm=ACoAAB_E06QBOEX78r8zu-z-Zr_ZM48xqlDTiYQ' }
         ]
     },
     'genai-azure': {
@@ -377,7 +377,7 @@ const projectData = {
         description: '• Developed a GenAI solution using Azure Machine Learning and RAG architecture for Contoso\'s operational workflows\n• Implemented agentic frameworks and prompt engineering pipelines to optimize model outputs\n• Deployed scalable cloud infrastructure on Azure (AKS, CI/CD pipelines), demonstrating expertise in GenAI Ops and enterprise-grade AI orchestration',
         tech: ['Azure ML', 'RAG', 'GenAI', 'AKS', 'CI/CD', 'Enterprise AI', 'Prompt Engineering'],
         links: [
-            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://linkedin.com/in/ashlesha-ahirwadi' }
+            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://github.com/Ashlesha-Ahirwadi/azure-ai-engineer-in-five-weeks.git' }
         ]
     },
     'medicurious': {
@@ -385,7 +385,7 @@ const projectData = {
         description: '• Developed a Large Language Model (LLM) to provide accurate and accessible medical insights for diverse audiences\n• Engineered AI-driven responses for real-world queries, including treatment recommendations, symptom analysis, and medication safety evaluations\n• Designed a scalable data pipeline integrating heterogeneous medical datasets into optimized JSONL formats, enabling efficient LLM training and powering a live demo for real-time, AI-augmented clinical decision support',
         tech: ['LLM', 'Medical AI', 'Clinical Decision Support', 'Data Pipeline', 'JSONL', 'Healthcare AI'],
         links: [
-            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://linkedin.com/in/ashlesha-ahirwadi' }
+            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://www.linkedin.com/posts/pavankonam_ai-medicalai-healthcareinnovation-ugcPost-7313049343320551425-9B46?utm_source=share&utm_medium=member_desktop&rcm=ACoAAB_E06QBOEX78r8zu-z-Zr_ZM48xqlDTiYQ' }
         ]
     },
     'eeg-dream-visualization': {
@@ -393,7 +393,7 @@ const projectData = {
         description: '• Decoded dreams from EEG signals and reconstructed visual dream content using AI techniques\n• Processed and categorized EEG data, achieving 87.79% classification accuracy with a CNN model\n• Generated artistic visualizations using a visualization tool, translating EEG spectrograms into dynamic, theme-specific art\n• Designed an end-to-end pipeline integrating EEG preprocessing, CNN-based dream theme classification, and AI-driven artistic rendering to create a cohesive visualization system',
         tech: ['EEG Processing', 'CNN', 'Signal Processing', 'Artistic Visualization', 'Neuroscience', 'AI Art'],
         links: [
-            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://linkedin.com/in/ashlesha-ahirwadi' }
+            { text: 'Learn More', icon: 'fas fa-external-link-alt', url: 'https://www.linkedin.com/posts/pavankonam_machinelearning-eeg-dreamdecoding-ugcPost-7311168130309836803-89u4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAB_E06QBOEX78r8zu-z-Zr_ZM48xqlDTiYQ' }
         ]
     },
     'stock-market-prediction': {
@@ -422,7 +422,7 @@ const projectData = {
     }
 };
 
-// Project Modal Functionality - Triggered on Hover
+// Project Modal Functionality - Triggered on Click
 const modal = document.getElementById('projectModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalImage = document.getElementById('modalImage');
@@ -431,82 +431,45 @@ const modalTech = document.getElementById('modalTech');
 const modalLinks = document.getElementById('modalLinks');
 const modalClose = document.querySelector('.modal-close');
 
-let hoverTimeout;
-let hideTimeout;
-
-// Add hover event listeners to project blocks
+// Add click event listeners to project blocks
 document.querySelectorAll('.project-block').forEach(block => {
-    block.addEventListener('mouseenter', () => {
+    block.addEventListener('click', () => {
         const projectId = block.getAttribute('data-project');
         const project = projectData[projectId];
-        
-        if (project) {
-            // Clear any existing timeouts
-            clearTimeout(hoverTimeout);
-            clearTimeout(hideTimeout);
-            
-            // Small delay before showing modal for better UX
-            hoverTimeout = setTimeout(() => {
-                // Populate modal content
-                modalTitle.textContent = project.title;
-                modalImage.src = block.querySelector('img').src;
-                modalImage.alt = project.title;
-                modalDescription.textContent = project.description;
-                
-                // Clear and populate tech tags
-                modalTech.innerHTML = '';
-                project.tech.forEach(tech => {
-                    const tag = document.createElement('span');
-                    tag.className = 'tech-tag';
-                    tag.textContent = tech;
-                    modalTech.appendChild(tag);
-                });
-                
-                // Clear and populate links
-                modalLinks.innerHTML = '';
-                project.links.forEach(link => {
-                    const btn = document.createElement('a');
-                    btn.href = link.url;
-                    btn.target = '_blank';
-                    btn.className = 'project-btn';
-                    btn.innerHTML = `<i class="${link.icon}"></i> ${link.text}`;
-                    modalLinks.appendChild(btn);
-                });
-                
-                // Show modal
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-            }, 300); // 300ms delay before showing
-        }
-    });
-    
-    block.addEventListener('mouseleave', () => {
-        // Clear show timeout if mouse leaves before delay
-        clearTimeout(hoverTimeout);
-        
-        // Delay hiding modal to allow mouse to move to modal
-        hideTimeout = setTimeout(() => {
-            if (modal.style.display === 'block') {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }, 200);
+
+        if (!project || !modal) return;
+
+        // Populate modal content
+        modalTitle.textContent = project.title;
+        modalImage.src = block.querySelector('img').src;
+        modalImage.alt = project.title;
+        modalDescription.textContent = project.description;
+
+        // Clear and populate tech tags
+        modalTech.innerHTML = '';
+        project.tech.forEach(tech => {
+            const tag = document.createElement('span');
+            tag.className = 'tech-tag';
+            tag.textContent = tech;
+            modalTech.appendChild(tag);
+        });
+
+        // Clear and populate links
+        modalLinks.innerHTML = '';
+        project.links.forEach(link => {
+            const btn = document.createElement('a');
+            btn.href = link.url;
+            btn.target = '_blank';
+            btn.className = 'project-btn';
+            btn.innerHTML = `<i class="${link.icon}"></i> ${link.text}`;
+            modalLinks.appendChild(btn);
+        });
+
+        // Show modal
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
     });
 });
-
-// Keep modal open when hovering over it
-if (modal) {
-    modal.addEventListener('mouseenter', () => {
-        clearTimeout(hideTimeout);
-    });
-    
-    modal.addEventListener('mouseleave', () => {
-        hideTimeout = setTimeout(() => {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }, 200);
-    });
-}
 
 // Close modal functionality
 if (modalClose) {
