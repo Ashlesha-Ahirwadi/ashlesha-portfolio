@@ -1,6 +1,6 @@
 # Ashlesha Ahirwadi - Portfolio Website
 
-A modern, responsive portfolio website showcasing AI engineering expertise, research projects, and entrepreneurial journey as Co-founder at APExpose.
+A modern, responsive portfolio website showcasing AI engineering expertise, research projects, and entrepreneurial journey as Co-founder at Ruvaah.
 
 ## 🚀 Features
 
@@ -8,7 +8,7 @@ A modern, responsive portfolio website showcasing AI engineering expertise, rese
 - **Responsive**: Fully responsive design that works on all devices
 - **Interactive**: Smooth scrolling, hover effects, modal galleries, and dynamic animations
 - **AI-Focused**: Highlighting AI/ML projects, research papers, and technical expertise
-- **Entrepreneurial**: Showcasing APExpose co-founding experience
+- **Entrepreneurial**: Showcasing Ruvaah co-founding experience
 - **Media Gallery**: Event photos and video presentations
 - **Contact Form**: Interactive contact form with validation
 - **Performance Optimized**: Fast loading with optimized images and code
@@ -228,4 +228,4 @@ For support or questions:
 
 **Built with ❤️ by Ashlesha Ahirwadi**
 
-*AI Engineer & Co-founder at APExpose*
+*AI Engineer & Co-founder at Ruvaah*

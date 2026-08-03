@@ -10,7 +10,7 @@ Follow these steps to deploy your portfolio to GitHub Pages:
 2. **Click the "+" icon** in the top right corner
 3. **Select "New repository"**
 4. **Repository name**: `ashleshaahirwadi.github.io` (replace with your GitHub username)
-5. **Description**: "AI Engineer & Co-founder at APExpose - Portfolio Website"
+5. **Description**: "AI Engineer & Co-founder at Ruvaah - Portfolio Website"
 6. **Make it Public** (required for free GitHub Pages)
 7. **Don't initialize** with README, .gitignore, or license (we already have these)
 8. **Click "Create repository"**

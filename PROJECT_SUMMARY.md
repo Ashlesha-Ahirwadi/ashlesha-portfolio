@@ -31,7 +31,7 @@ Your professional AI Engineer portfolio website is now complete with:
 
 ### 🚀 Key Features
 - **AI-Focused Content** - Highlights your expertise in machine learning
-- **APExpose Integration** - Showcases your co-founding role
+- **Ruvaah Integration** - Showcases your co-founding role
 - **Research Publications** - Features your academic work
 - **Event Gallery** - Professional photos from conferences and events
 - **Technical Skills** - Comprehensive skill showcase
@@ -65,13 +65,13 @@ git push -u origin main
 ## 🌟 Portfolio Highlights
 
 ### Professional Branding
-- **Title**: AI Engineer & Co-founder at APExpose
+- **Title**: AI Engineer & Co-founder at Ruvaah
 - **Focus**: Machine Learning, Time Series Analysis, Financial AI
 - **Achievements**: Published research, 85% prediction accuracy, scalable ML systems
 
 ### Technical Showcase
 - **Stock Market Forecasting** - LSTM networks with ARIMA models
-- **APExpose Platform** - AI-powered data analysis solution
+- **Ruvaah Platform** - AI-powered fraud detection and trust intelligence for hiring teams
 - **Research Publications** - Academic contributions to AI field
 
 ### Interactive Elements
@@ -132,7 +132,7 @@ Consider adding later:
 
 ## 🎉 Congratulations!
 
-Your professional AI Engineer portfolio is complete and ready to showcase your expertise, APExpose co-founding experience, and technical achievements. The modern, interactive design will make a strong impression on potential employers, collaborators, and clients.
+Your professional AI Engineer portfolio is complete and ready to showcase your expertise, Ruvaah co-founding experience, and technical achievements. The modern, interactive design will make a strong impression on potential employers, collaborators, and clients.
 
 **Your portfolio URL will be**: `https://ashleshaahirwadi.github.io`
 
@@ -141,4 +141,4 @@ Your professional AI Engineer portfolio is complete and ready to showcase your e
 ---
 
 **Built with ❤️ for Ashlesha Ahirwadi**  
-*AI Engineer & Co-founder at APExpose*
+*AI Engineer & Co-founder at Ruvaah*
