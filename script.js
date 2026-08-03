@@ -93,6 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 console.log('Portfolio website loaded successfully! 🚀');
 
+// Footer copyright year
+const footerYear = document.getElementById('footerYear');
+if (footerYear) {
+    footerYear.textContent = new Date().getFullYear();
+}
+
 // Contact form removed - users will email directly
 
 // Notification system
