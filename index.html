@@ -3,599 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashlesha Ahirwadi - AI Engineer & Co-founder at Ruvaah</title>
-    <meta name="description" content="Portfolio of Ashlesha Ahirwadi - AI Engineer, Co-founder at Ruvaah, showcasing AI projects, research, and professional achievements">
-    <link rel="icon" type="image/svg+xml" href="favicon.ico">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
+    <title>Ashlesha Ahirwadi · AI Engineer</title>
+    <meta name="description" content="Ashlesha Ahirwadi, AI engineer in Chicago building AI agents, RAG systems and LLM tools. Co-founder of Ruvaah. Kiki, her AI agent, will show you around.">
+    <link rel="icon" href="favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=pro4">
+    <link rel="stylesheet" href="kiki/kiki.css?v=8">
 </head>
 <body>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="#home">Ashlesha Ahirwadi</a>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#experience" class="nav-link">Experience</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#projects" class="nav-link">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#gallery" class="nav-link">Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#blog" class="nav-link">Insights</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-            </ul>
-            <a href="Ashlesha_Ahirwadi_Resume (26).pdf" download class="nav-resume-btn">
-                <i class="fas fa-download"></i> Resume
-            </a>
-            <div class="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+    <!-- floating clay blobs in the background -->
+    <div class="blobs" aria-hidden="true">
+        <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span>
+    </div>
+
+    <header class="nav" id="nav">
+        <a href="#home" class="nav-logo" aria-label="Ashlesha Ahirwadi, back to top"><span class="logo-dot"></span>Ashlesha Ahirwadi</a>
+        <nav class="nav-links" id="navLinks" aria-label="Sections">
+            <a href="#about">About</a>
+            <a href="#experience">Work</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#writing">Writing</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-actions">
+            <button class="clay-icon" id="kikiSound" aria-label="Turn Kiki's voice off" title="Kiki's voice"><i class="fas fa-volume-high"></i></button>
+            <button class="clay-btn clay-btn-sm clay-accent" id="askKiki"><i class="fas fa-paw"></i><span class="ask-label">Ask Kiki</span></button>
+            <button class="clay-icon nav-toggle" id="navToggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="gradient-text">Ashlesha Ahirwadi</span>
-                    </h1>
-                    <h2 class="hero-subtitle">AI Engineer | Co-founder @ Ruvaah</h2>
-                    <!-- <p class="hero-description">
-                        Passionate AI Engineer specializing in machine learning, time series analysis, and predictive modeling.
-                        Co-founder at Ruvaah, driving innovation in AI-powered fraud detection and trust intelligence for hiring teams.
-                        Published researcher with expertise in stock market forecasting and advanced AI methodologies.
-                    </p> -->
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                    </div>
-                    <div class="hero-social">
-                        <a href="https://linkedin.com/in/ashlesha-ahirwadi" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/Ashlesha-Ahirwadi" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                            <a href="mailto:ashlesha.ahirwadi@gmail.com" class="social-link">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                    </div>
+    <main>
+        <!-- Hero -->
+        <section id="home" class="hero">
+            <div class="hero-text reveal">
+                <span class="pill clay-mint"><span class="live-dot"></span> Open to AI / ML engineering roles across the US</span>
+                <h1>Hi, I'm <span class="hl">Ashlesha</span>.<br>I build AI agents that actually ship.</h1>
+                <p class="rotator">Currently building <span id="rotWord">multi-agent RAG systems</span></p>
+                <p class="lede">AI engineer in Chicago working on multi-agent systems, RAG and LLM tools. M.S. in Artificial Intelligence from Northwestern, and co-founder of Ruvaah.</p>
+                <div class="hero-cta">
+                    <a href="#projects" class="clay-btn clay-accent"><i class="fas fa-wand-magic-sparkles"></i> See my work</a>
+                    <a href="Ashlesha_Ahirwadi_Resume.pdf" download class="clay-btn"><i class="fas fa-download"></i> Resume</a>
                 </div>
-                <div class="hero-image">
-                    <div class="image-container">
-                        <img src="Photos-1-001/profile.png" alt="Ashlesha Ahirwadi" class="profile-image">
-                        <div class="image-overlay"></div>
-                    </div>
+                <div class="hero-social">
+                    <a class="clay-icon" href="https://linkedin.com/in/ashlesha-ahirwadi" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="clay-icon" href="https://github.com/Ashlesha-Ahirwadi" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a class="clay-icon" href="mailto:ashlesha.ahirwadi@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Get to know me better</p>
+            <div class="hero-art reveal">
+                <div class="photo-clay" data-perch data-say="hov_photo"><img src="Photos-1-001/profile.png" alt="Ashlesha Ahirwadi"></div>
+                <span class="float-chip c1 clay-lav"><i class="fas fa-robot"></i> Multi-agent RAG</span>
+                <span class="float-chip c2 clay-butter"><i class="fas fa-brain"></i> LLM fine-tuning</span>
+                <span class="float-chip c3 clay-mint"><i class="fas fa-cloud"></i> MLOps</span>
             </div>
-            <div class="about-content">
-                <div class="about-left">
-                    <div class="about-text">
-                        <h3>AI Engineer & Entrepreneur</h3>
-                        <p>
-                            I turn data into intelligence. Whether it’s forecasting stock market trends, detecting anomalies in medical images, or building recommendation engines, I thrive on projects that push the boundaries of what AI can do. Each project is an opportunity to experiment with new algorithms, optimize models, and engineer end-to-end systems that deliver tangible results.
-                        </p>
-                        <p>
-                            My work spans a variety of domains — from real-time computer vision pipelines for fitness and healthcare, to specialized natural language processing applications, and time series forecasting models for financial data. I enjoy combining rigorous research with hands-on engineering, translating insights into systems that solve real-world problems.
-                        </p>
-                        <p>At Ruvaah, I explore early-stage AI initiatives, transforming prototypes into functioning solutions and learning from every iteration. Across every project, my focus is on creating AI systems that are not only technically sophisticated but also practical, efficient, and impactful.</p>
-                    </div>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">4</div>
-                            <div class="stat-label">Internships</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">12</div>
-                            <div class="stat-label">AI Projects</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">2</div>
-                            <div class="stat-label">Research Papers</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">1</div>
-                            <div class="stat-label">Co-founded Company</div>
-                        </div>
-                    </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="section">
+            <div class="section-head reveal" data-perch>
+                <span class="kicker">01 · About</span>
+                <h2>From messy data to systems that run</h2>
+            </div>
+            <div class="about-grid">
+                <div class="clay-card about-copy reveal">
+                    <p>I turn data into working AI. Lately that means agents: a multi-agent RAG system that lets teams ask questions across CRM, sales, marketing and finance data, and a recruiting agent that runs a hiring workflow end to end.</p>
+                    <p>Before agents, I worked on computer vision for healthcare and fitness, NLP and LLM fine-tuning, and time series forecasting. I like pairing careful research with hands-on engineering, then shipping something people can use.</p>
                 </div>
-                <div class="about-right">
-                    <div class="skills">
-                        <h4>Technical Skills</h4>
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <i class="fas fa-brain"></i>
-                                <span>Machine Learning</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-robot"></i>
-                                <span>Deep Learning</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Time Series Analysis</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fab fa-python"></i>
-                                <span>Python</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-database"></i>
-                                <span>Data Science</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-project-diagram"></i>
-                                <span>AI System Design</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-chart-bar"></i>
-                                <span>Financial Modeling</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-cloud"></i>
-                                <span>Cloud Computing</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-users"></i>
-                                <span>Team Leadership</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-lightbulb"></i>
-                                <span>Innovation</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="stats reveal">
+                    <div class="stat clay-card clay-accentish" data-perch data-say="about_stats"><b data-count="4">0</b><span>AI roles</span></div>
+                    <div class="stat clay-card clay-mintish" data-perch data-say="about_stats"><b data-count="11">0</b><span>AI projects</span></div>
+                    <div class="stat clay-card clay-lavish" data-perch data-say="about_stats"><b data-count="2">0</b><span>research papers</span></div>
+                    <div class="stat clay-card clay-butterish" data-perch data-say="ruvaah"><b data-count="1">0</b><span>startup co-founded</span></div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Professional Experience</h2>
-                <p class="section-subtitle">Building AI solutions in industry</p>
+            <div class="edu reveal">
+                <div class="clay-card edu-item" data-perch data-say="about_edu"><span class="edu-icon clay-lav"><i class="fas fa-graduation-cap"></i></span><div><strong>M.S. Artificial Intelligence</strong><span>Northwestern University · Sept 2024 – Dec 2025</span></div></div>
+                <div class="clay-card edu-item" data-perch data-say="cummins"><span class="edu-icon clay-butter"><i class="fas fa-graduation-cap"></i></span><div><strong>B.Tech Information Technology</strong><span>Cummins College of Engineering for Women, Pune · 2020 – 2024</span></div></div>
             </div>
-            
-            <div class="experience-timeline">
-                <div class="experience-item">
-                    <div class="experience-date">Aug 2025 – Present</div>
-                    <div class="experience-content">
-                        <h3>AI/ML Engineering</h3>
-                        <h4><i class="fas fa-building"></i> Imagit, Inc. – Chicago, IL</h4>
-                        <ul>
-                            <li>Built Pronto, Imagit's disaster recovery platform, with an AI-powered quote recommendation system that turns client requirements into tailored recovery plans, unifying sales, marketing, and finance data in a centralised CRM.</li>
-                            <li>Developed a multi-agent RAG system on the Pronto data layer, letting teams query CRM, sales, marketing, and finance data in natural language, cutting manual cross-platform lookups and speeding up decision-making.</li>
-                            <li>Built an internal technician recruitment agent that autonomously sources candidates, sends screening links, evaluates responses, and manages onboarding, replacing a manual hiring workflow with an end-to-end agentic pipeline.</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="experience-item">
-                    <div class="experience-date">Jun 2025 – Aug 2025</div>
-                    <div class="experience-content">
-                        <h3>AI Engineering Intern</h3>
-                        <h4><i class="fas fa-building"></i> Arqaios Inc. – Chicago, IL</h4>
-                        <ul>
-                            <li> Built an MVP for fall detection using mmWave sensors to collect gait and motion data.</li>
-                            <li>Developed a visualization environment to track and differentiate multiple individuals, detect anomalies, and identify falls in real-time.</li>
-                            <li>Created a solution designed for nursing homes and retirement facilities, supporting proactive monitoring and improving safety for residents.</li>
-                        </ul>
-                    </div>
-                </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="section">
+            <div class="section-head reveal" data-perch>
+                <span class="kicker">02 · Work</span>
+                <h2>Where I've built things</h2>
             </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Explore my portfolio of AI and technology projects</p>
-            </div>
-            
-            <div class="projects-grid">
-                <!-- Project 1: Lung Tumor Detection -->
-                <div class="project-block" data-project="lung-tumor-detection">
-                    <div class="project-image">
-                        <img src="lung-cancer.png" alt="Lung Tumor Detection">
-                        <div class="project-overlay">
-                            <h3>Lung Tumor Detection from 3D CT Scans</h3>
-                        </div>
+            <div class="jobs">
+                <article class="clay-card job job-feature reveal" id="job-ruvaah" data-perch data-say="work_ruvaah">
+                    <div class="job-top"><span class="job-badge clay-lav"><i class="fas fa-shield-heart"></i></span>
+                        <div><h3>Co-founder</h3><p class="job-co">Ruvaah, Inc. · Human Trust Intelligence for hiring</p></div><span class="date pill">Apr 2026 – Present</span></div>
+                    <p class="job-lede">AI has made it easy to fake a job candidate: the résumé, the identity, even the interview. Ruvaah is <strong>"TSA PreCheck for hiring"</strong>. It scores every applicant for trust before a recruiter ever talks to them, and exposes coordinated fraud rings across the whole applicant pool.</p>
+                    <ul>
+                        <li>Co-founded the company and lead product strategy and AI workflow design.</li>
+                        <li><strong>Eight passive fraud-signal tracks</strong> fused into one auditable trust score: identity, career timeline, employer legitimacy, résumé artifacts, application velocity, behavioral patterns, fraud rings, and reference network.</li>
+                        <li><strong>Graph-based fraud-ring detection</strong> clusters candidates who share résumé templates, IP subnets or shell employers, auto-flags every member of a ring, and lets analysts quarantine the ring in one click.</li>
+                        <li>A recruiter console with the pipeline, candidate dossiers and ring graphs, live at ruvaah.com with 50 free evaluations.</li>
+                    </ul>
+                    <div class="job-links">
+                        <a class="clay-btn clay-btn-sm clay-accent" href="https://ruvaah.com" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Visit ruvaah.com</a>
                     </div>
-                </div>
-
-                <!-- Project 2: StoryTeller AI -->
-                <div class="project-block" data-project="storyteller-ai">
-                    <div class="project-image">
-                        <img src="Photos-1-001/events/StoryTeller.png" alt="StoryTeller AI">
-                        <div class="project-overlay">
-                            <h3>StoryTeller AI - Personalized Story Generator</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Image Restoration Pipeline -->
-                <div class="project-block" data-project="image-restoration">
-                    <div class="project-image">
-                        <img src="Photos-1-001/events/image.png" alt="Image Restoration Pipeline">
-                        <div class="project-overlay">
-                            <h3>AI-Powered Image Restoration Pipeline</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4: Amazon Fake Review Detection -->
-                <div class="project-block" data-project="fake-review-detection">
-                    <div class="project-image">
-                        <img src="Photos-1-001/events/Amazon-logo.jpg" alt="Amazon Fake Review Detection">
-                        <div class="project-overlay">
-                            <h3>Amazon Fake Review Detection</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5: Virtual Gym Trainer -->
-                <div class="project-block" data-project="virtual-gym-trainer">
-                    <div class="project-image">
-                        <img src="Photos-1-001/events/gym.png" alt="Virtual Gym Trainer">
-                        <div class="project-overlay">
-                            <h3>Virtual Gym Trainer - CV-Based Fitness</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 6: Business-Artist Connector -->
-                <div class="project-block" data-project="business-artist-connector">
-                    <div class="project-image">
-                        <img src="business-connector.png" alt="Business-Artist Connector">
-                        <div class="project-overlay">
-                            <h3>Local Business-Artist Connector App</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 7: GenAI Solution with Azure -->
-                <div class="project-block" data-project="genai-azure">
-                    <div class="project-image">
-                        <img src="Photos-1-001/events/genAI .jpg" alt="GenAI Solution with Azure">
-                        <div class="project-overlay">
-                            <h3>GenAI Solution Development with Azure</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 8: MediCurious -->
-                <div class="project-block" data-project="medicurious">
-                    <div class="project-image">
-                        <img src="medicurious.png" alt="MediCurious">
-                        <div class="project-overlay">
-                            <h3>MediCurious - Specialized Medical LLM</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 9: EEG Dream Visualization -->
-                <div class="project-block" data-project="eeg-dream-visualization">
-                    <div class="project-image">
-                        <img src="Photos-1-001/events/eeg.jpg" alt="EEG Dream Visualization">
-                        <div class="project-overlay">
-                            <h3>Artistic Visualization of Dreams Using EEG</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 10: Stock Market Prediction -->
-                <div class="project-block" data-project="stock-market-prediction">
-                    <div class="project-image">
-                        <img src="stock-market.png" alt="Stock Market Prediction">
-                        <div class="project-overlay">
-                            <h3>Stock Market Prediction (Options Trading)</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 11: ICU Insight -->
-                <div class="project-block" data-project="icu-insight">
-                    <div class="project-image">
-                        <img src="Photos-1-001/events/icu.webp" alt="ICU Insight">
-                        <div class="project-overlay">
-                            <h3>ICU Insight - Predictive Healthcare Analytics</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 12: AI Research Intern - Medical Image Analysis -->
-                <div class="project-block" data-project="medical-image-analysis">
-                    <div class="project-image">
-                        <img src="Photos-1-001/20240109_163546.jpg" alt="AI Research Intern - Medical Image Analysis">
-                        <div class="project-overlay">
-                            <h3>AI Research Intern - Medical Image Analysis</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Event Gallery</h2>
-                <p class="section-subtitle">Moments from conferences, workshops, and events</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/20231212_114220.jpg" alt="Tech Meetup">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/20240413_205044.jpg" alt="Workshop Session">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/20240923_105551.jpg" alt="AI Summit">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/20240923_152418.jpg" alt="Research Presentation">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/20241024_091501.jpg" alt="Innovation Workshop">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/IMG_20240308_173324_964.jpg" alt="Team Collaboration">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/IMG_20240311_230748_424.jpg" alt="Project Discussion">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/Screenshot_20221106-084726_WhatsApp.jpg" alt="Conference Highlights">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/2.jpeg" alt="Event Moment 2">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/6.jpeg" alt="Event Moment 6">
-                </div>
-                <!-- Duplicate gallery items for seamless loop -->
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/20231212_114220.jpg" alt="Tech Meetup">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/20240413_205044.jpg" alt="Workshop Session">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/20240923_105551.jpg" alt="AI Summit">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/20240923_152418.jpg" alt="Research Presentation">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/20241024_091501.jpg" alt="Innovation Workshop">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/IMG_20240308_173324_964.jpg" alt="Team Collaboration">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/IMG_20240311_230748_424.jpg" alt="Project Discussion">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/Screenshot_20221106-084726_WhatsApp.jpg" alt="Conference Highlights">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/2.jpeg" alt="Event Moment 2">
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="Photos-1-001/events/6.jpeg" alt="Event Moment 6">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section id="blog" class="blog">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Latest Insights</h2>
-                <p class="section-subtitle">Thoughts on AI, technology, and innovation</p>
-            </div>
-            <div class="blog-grid">
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="download.png" alt="Northwestern Engineering - AI Advances in Cancer Care">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">2025</span>
-                            <span class="blog-category">Research Publication</span>
-                        </div>
-                        <h3>AI Advances in Cancer Care: PulmoScanAI Featured by Northwestern</h3>
-                        <p>Featured in Northwestern Engineering's MSAI program story for developing PulmoScanAI, an AI-powered system that automatically identifies lung tumor bounds from 3D CT scans. This practicum project, completed in partnership with Northwestern Medicine's Feinberg School of Medicine, aims to improve radiologists' efficiency and consistency in radiation therapy treatment planning. The work demonstrates the application of deep learning and computer vision techniques to address critical challenges in medical imaging and cancer care.</p>
-                        <a href="https://www.mccormick.northwestern.edu/artificial-intelligence/inside-our-program/stories/2025/ai-advances-in-cancer-care.html" target="_blank" class="blog-link">Read Article <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                    <div class="tags"><span>Startup</span><span>Trust & safety</span><span>Graph ML</span><span>Fraud detection</span><span>Product</span></div>
                 </article>
-
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="research-paper-image.png" alt="Literature Survey Research Paper">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">2024</span>
-                            <span class="blog-category">Research Publication</span>
-                        </div>
-                        <h3>Literature Survey: Sentiment Analysis of Text Documents</h3>
-                        <p>Published comprehensive literature survey exploring sentiment analysis methodologies for text documents. The research examines various machine learning approaches including natural language processing techniques, deep learning models, and traditional classification algorithms for analyzing sentiment in textual data. The survey provides insights into current trends, challenges, and future directions in sentiment analysis research.</p>
-                        <a href="Track4_PaperID417 (1).pptx" target="_blank" class="blog-link">Read Paper <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                <article class="clay-card job reveal" id="job-imagit" data-perch data-say="work_imagit">
+                    <div class="job-top"><span class="job-badge clay-accent"><i class="fas fa-bolt"></i></span>
+                        <div><h3>AI/ML Engineering</h3><p class="job-co">Imagit, Inc. · Chicago</p></div><span class="date pill">Aug 2025 – Present</span></div>
+                    <ul>
+                        <li>Built Pronto, Imagit's disaster recovery platform, with an AI quote recommendation system that turns client requirements into tailored recovery plan quotes, unifying sales, marketing and finance data in a central CRM.</li>
+                        <li>Developed a multi-agent RAG system on the Pronto data layer so teams can query CRM, sales, marketing and finance data in plain language.</li>
+                        <li>Built a technician recruitment agent that sources candidates, sends screening links, evaluates responses and manages onboarding, end to end.</li>
+                    </ul>
+                    <div class="tags"><span>Multi-agent</span><span>RAG</span><span>LLMs</span><span>CRM data</span></div>
                 </article>
-
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="footprints-image.png" alt="AICVS Footprints From The Archives">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">2024</span>
-                            <span class="blog-category">Industry Insights</span>
-                        </div>
-                        <h3>Footprints 3.0: Comprehensive Guide to Research Internships</h3>
-                        <p>Co-authored detailed Medium article providing strategic guidance for students seeking research internships in AI and technology fields. The article covers application processes, interview preparation, project selection, and success stories from students who secured positions at top research institutions and tech companies.</p>
-                        <a href="https://medium.com/@aicvs.cummins/footprints-3-0-unlocking-research-internships-ba023716be96" target="_blank" class="blog-link">Read Article <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                <article class="clay-card job reveal" id="job-arqaios" data-perch data-say="work_arqaios">
+                    <div class="job-top"><span class="job-badge clay-mint"><i class="fas fa-satellite-dish"></i></span>
+                        <div><h3>AI Engineering Intern</h3><p class="job-co">Arqaios Inc. · Chicago</p></div><span class="date pill">Jun – Aug 2025</span></div>
+                    <ul>
+                        <li>Built an MVP for a smart fixture that uses mmWave radar and AI for real-time fall detection and presence awareness in elderly care.</li>
+                        <li>Designed a hybrid edge-cloud inference pipeline: on-device models for low-latency alerts, cloud streaming for monitoring.</li>
+                        <li>Worked with hardware and software teams from sensor data collection through training and deployment.</li>
+                    </ul>
+                    <div class="tags"><span>mmWave</span><span>Edge AI</span><span>Real-time ML</span></div>
                 </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Let's collaborate and build something amazing together</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <p>ashlesha.ahirwadi@gmail.com</p>
-                            <p>ahirwadiashlesha@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>LinkedIn</h4>
-                            <p>linkedin.com/in/ashlesha-ahirwadi</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Location</h4>
-                            <p>Chicago, IL, USA</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <div class="direct-email-section">
-                        <h3>Let's Connect</h3>
-                        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
-                        <div class="contact-action-buttons">
-                            <a href="mailto:ashlesha.ahirwadi@gmail.com,ahirwadiashlesha@gmail.com" class="btn btn-primary email-btn">
-                                <i class="fas fa-envelope"></i> Email Me Directly
-                            </a>
-                            <a href="Ashlesha_Ahirwadi_Resume (26).pdf" download class="btn btn-resume">
-                                <i class="fas fa-download"></i> Download Resume
-                            </a>
-                        </div>
-                    </div>
+                <div class="jobs-small">
+                    <article class="clay-card job job-sm reveal" data-perch data-say="hov_symbiosis">
+                        <div class="job-top"><span class="job-badge clay-butter"><i class="fas fa-x-ray"></i></span>
+                            <div><h3>AI Research Intern</h3><p class="job-co">Symbiosis Centre for Medical Image Analysis</p></div></div>
+                        <p>Statistical shape model to segment femur MRI scans (Scala, Scalismo). <span class="muted">Jul – Dec 2023</span></p>
+                    </article>
+                    <article class="clay-card job job-sm reveal" data-perch data-say="hov_drdo">
+                        <div class="job-top"><span class="job-badge clay-accent"><i class="fas fa-envelope-circle-check"></i></span>
+                            <div><h3>AI Research Intern</h3><p class="job-co">DRDO</p></div></div>
+                        <p>ML spam email filter with 99.4% accuracy. <span class="muted">Jul – Sep 2022</span></p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
+        <!-- Projects -->
+        <section id="projects" class="section">
+            <div class="section-head reveal" data-perch>
+                <span class="kicker">03 · Projects</span>
+                <h2>Things I've made</h2>
+            </div>
+            <div class="filters reveal" role="group" aria-label="Filter projects">
+                <button class="clay-chip active" data-filter="all">All</button>
+                <button class="clay-chip" data-filter="llm">LLMs & agents</button>
+                <button class="clay-chip" data-filter="vision">Vision</button>
+                <button class="clay-chip" data-filter="health">Healthcare</button>
+                <button class="clay-chip" data-filter="data">Data & forecasting</button>
+            </div>
+            <div class="project-grid" id="projectGrid"></div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="section">
+            <div class="section-head reveal" data-perch>
+                <span class="kicker">04 · Toolbox</span>
+                <h2>What I build with</h2>
+            </div>
+            <div class="skill-grid">
+                <div class="clay-card skill reveal" data-perch data-say="skills_agents"><span class="skill-icon clay-accent"><i class="fas fa-robot"></i></span><h3>Agents & LLMs</h3>
+                    <div class="tags"><span>LangChain</span><span>LangGraph</span><span>AutoGen</span><span>LlamaIndex</span><span>RAG</span><span>Multi-agent</span><span>Fine-tuning</span><span>Prompt engineering</span><span>HuggingFace</span></div></div>
+                <div class="clay-card skill reveal" data-perch data-say="hov_skill_ml"><span class="skill-icon clay-lav"><i class="fas fa-layer-group"></i></span><h3>ML & deep learning</h3>
+                    <div class="tags"><span>PyTorch</span><span>TensorFlow</span><span>Keras</span><span>scikit-learn</span><span>MONAI</span><span>spaCy</span><span>NLTK</span><span>Pandas</span><span>NumPy</span></div></div>
+                <div class="clay-card skill reveal" data-perch data-say="skills_cloud"><span class="skill-icon clay-mint"><i class="fas fa-cloud"></i></span><h3>Cloud & MLOps</h3>
+                    <div class="tags"><span>Azure ML</span><span>AKS</span><span>AWS Bedrock</span><span>EMR</span><span>Docker</span><span>Kubernetes</span><span>MLflow</span><span>GitHub Actions</span><span>Chroma</span><span>Pinecone</span></div></div>
+                <div class="clay-card skill reveal" data-perch data-say="hov_skill_lang"><span class="skill-icon clay-butter"><i class="fas fa-code"></i></span><h3>Languages & tools</h3>
+                    <div class="tags"><span>Python</span><span>SQL</span><span>Scala</span><span>Java</span><span>JavaScript</span><span>HTML/CSS</span><span>C</span><span>Claude Code</span><span>Cursor</span></div></div>
+            </div>
+        </section>
+
+        <!-- Writing -->
+        <section id="writing" class="section">
+            <div class="section-head reveal" data-perch>
+                <span class="kicker">05 · Writing & features</span>
+                <h2>Papers, articles, press</h2>
+            </div>
+            <div class="post-grid">
+                <a class="clay-card post reveal" id="post-pulmo" data-perch data-say="writing_pulmo" href="https://www.mccormick.northwestern.edu/artificial-intelligence/inside-our-program/stories/2025/ai-advances-in-cancer-care.html" target="_blank" rel="noopener">
+                    <div class="post-img"><img src="download.png" alt="" loading="lazy"></div>
+                    <span class="pill clay-accent">Feature · 2025</span>
+                    <h3>AI Advances in Cancer Care: PulmoScanAI featured by Northwestern</h3>
+                    <p>Our practicum with Northwestern Medicine on finding lung tumor bounds in 3D CT scans.</p>
+                </a>
+                <div class="clay-card post reveal" data-perch data-say="hov_paper">
+                    <div class="post-img"><img src="research-paper-image.png" alt="" loading="lazy"></div>
+                    <span class="pill clay-lav">Paper · 2024</span>
+                    <h3>Literature Survey: Sentiment Analysis of Text Documents</h3>
+                    <p>A survey of NLP, deep learning and classical approaches to sentiment analysis.</p>
+                </div>
+                <a class="clay-card post reveal" data-perch data-say="hov_footprints" href="https://medium.com/@aicvs.cummins/footprints-3-0-unlocking-research-internships-ba023716be96" target="_blank" rel="noopener">
+                    <div class="post-img"><img src="footprints-image.png" alt="" loading="lazy"></div>
+                    <span class="pill clay-mint">Article · 2024</span>
+                    <h3>Footprints 3.0: A guide to research internships</h3>
+                    <p>Co-authored guide for students going after AI research internships.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section id="gallery" class="section">
+            <div class="section-head reveal" data-perch>
+                <span class="kicker">06 · Moments</span>
+                <h2>Events, talks and teams</h2>
+            </div>
+            <div class="gallery reveal">
+                <div class="gallery-track">
+                    <img src="Photos-1-001/events/20231212_114220.jpg" alt="Tech meetup" loading="lazy">
+                    <img src="Photos-1-001/events/20240413_205044.jpg" alt="Workshop session" loading="lazy">
+                    <img src="Photos-1-001/events/20240923_105551.jpg" alt="AI summit" loading="lazy">
+                    <img src="Photos-1-001/events/20240923_152418.jpg" alt="Research presentation" loading="lazy">
+                    <img src="Photos-1-001/events/20241024_091501.jpg" alt="Innovation workshop" loading="lazy">
+                    <img src="Photos-1-001/events/IMG_20240308_173324_964.jpg" alt="Team collaboration" loading="lazy">
+                    <img src="Photos-1-001/events/IMG_20240311_230748_424.jpg" alt="Project discussion" loading="lazy">
+                    <img src="Photos-1-001/events/2.jpeg" alt="Event moment" loading="lazy">
+                    <img src="Photos-1-001/events/6.jpeg" alt="Event moment" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="section">
+            <div class="clay-card contact-card reveal" data-perch>
+                <span class="kicker">07 · Contact</span>
+                <h2>Let's build something together</h2>
+                <p>Hiring for AI, ML or agent work? Or just want to talk shop? I'm based in Chicago and open to roles anywhere in the US, on-site, hybrid or remote.</p>
+                <div class="contact-actions">
+                    <a href="mailto:ashlesha.ahirwadi@gmail.com" class="clay-btn clay-accent"><i class="fas fa-envelope"></i> ashlesha.ahirwadi@gmail.com</a>
+                    <a href="https://linkedin.com/in/ashlesha-ahirwadi" target="_blank" rel="noopener" class="clay-btn"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                    <a href="https://github.com/Ashlesha-Ahirwadi" target="_blank" rel="noopener" class="clay-btn"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="Ashlesha_Ahirwadi_Resume.pdf" download class="clay-btn"><i class="fas fa-download"></i> Resume</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-text">
-                    <p>&copy; <span id="footerYear"></span> Ashlesha Ahirwadi. All rights reserved.</p>
-                </div>
-                <div class="footer-social">
-                    <a href="https://linkedin.com/in/ashlesha-ahirwadi" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/Ashlesha-Ahirwadi" target="_blank" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="mailto:ashlesha.ahirwadi@gmail.com" class="social-link">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <p>© <span id="year"></span> Ashlesha Ahirwadi · Tour guide: Kiki</p>
     </footer>
 
-    <!-- Project Modal -->
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <div class="modal-header">
-                <h2 id="modalTitle"></h2>
-            </div>
-            <div class="modal-body">
-                <div class="modal-image">
-                    <img id="modalImage" src="" alt="">
-                </div>
-                <div class="modal-info">
-                    <div class="modal-description">
-                        <h3>Project Description</h3>
-                        <p id="modalDescription"></p>
-                    </div>
-                    <div class="modal-tech">
-                        <h3>Technologies Used</h3>
-                        <div id="modalTech" class="tech-tags"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="modal-links" id="modalLinks"></div>
-            </div>
+    <!-- Project modal -->
+    <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-box clay-card">
+            <button class="clay-icon modal-close" data-close aria-label="Close"><i class="fas fa-xmark"></i></button>
+            <div class="modal-img"><img id="modalImage" src="" alt=""></div>
+            <h3 id="modalTitle"></h3>
+            <ul id="modalPoints"></ul>
+            <div class="tags" id="modalTags"></div>
+            <div class="modal-links" id="modalLinks"></div>
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="script.js?v=3"></script>
+    <script src="projects.js?v=1"></script>
+    <script src="script.js?v=pro3"></script>
+
+    <!-- Kiki: Ashlesha's 3D voice agent -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="kiki/brain.js?v=7"></script>
+    <script src="kiki/kiki.js?v=11"></script>
 </body>
 </html>

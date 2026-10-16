@@ -1,0 +1,178 @@
+/* Kiki: the roaming 3D bear, her speech bubble, and the little "ask" card */
+.kiki-body {
+    position: fixed; left: 0; top: 0; z-index: 800;
+    cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none;
+    opacity: 0; transition: opacity .3s; will-change: transform;
+}
+.kiki-body.on { opacity: 1; }
+.kiki-body.dragging { cursor: grabbing; }
+.kiki-body canvas { display: block; width: 100%; height: 100%; }
+.kiki-body:focus-visible { outline: 3px dashed #4C5BD4; outline-offset: -10px; border-radius: 40%; }
+.kiki-fallback { width: 100%; height: 100%; display: flex; align-items: flex-end; justify-content: center; font-size: 72px; }
+
+/* sleepy z's */
+.kiki-zzz { position: absolute; top: 4%; right: 8%; pointer-events: none; opacity: 0; transition: opacity .4s; }
+.kiki-body.sleeping .kiki-zzz { opacity: 1; }
+.kiki-zzz i {
+    position: absolute; font-family: 'Plus Jakarta Sans', sans-serif; font-style: normal; font-weight: 700; color: #8C93B8;
+    animation: kikiZ 2.4s ease-in infinite; opacity: 0;
+}
+.kiki-zzz i:nth-child(1) { font-size: 16px; }
+.kiki-zzz i:nth-child(2) { font-size: 21px; animation-delay: .8s; }
+.kiki-zzz i:nth-child(3) { font-size: 26px; animation-delay: 1.6s; }
+@keyframes kikiZ { 0% { transform: translate(0, 10px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translate(22px, -36px); opacity: 0; } }
+
+/* ---------- comic speech bubble ---------- */
+.kiki-bubble {
+    position: fixed; left: 0; top: 0; z-index: 820; width: max-content; max-width: min(320px, calc(100vw - 20px));
+    background: #FFFFFF; color: #1C2130; border-radius: 24px; padding: 14px 18px;
+    font-family: 'Inter', system-ui, sans-serif; font-size: 15px; font-weight: 700; line-height: 1.45;
+    box-shadow: 10px 12px 26px rgba(35, 45, 80, .3), -5px -5px 14px rgba(255, 255, 255, .9),
+                inset -4px -5px 10px rgba(35, 45, 80, .05), inset 4px 4px 8px #fff;
+    opacity: 0; pointer-events: none; transition: opacity .25s;
+    --tail: 50%;
+}
+.kiki-bubble.on { opacity: 1; pointer-events: auto; animation: kikiBubbleIn .35s cubic-bezier(.34, 1.56, .64, 1); }
+.kiki-bubble::after {
+    content: ''; position: absolute; left: var(--tail); bottom: -9px; width: 20px; height: 20px; margin-left: -10px;
+    background: #FFFFFF; border-radius: 4px; transform: rotate(45deg);
+    box-shadow: 6px 6px 10px rgba(35, 45, 80, .18);
+}
+.kiki-bubble.side-left::after { left: auto; right: -9px; bottom: auto; top: 22px; margin: 0; box-shadow: 5px -3px 8px rgba(35, 45, 80, .15); }
+.kiki-bubble.side-right::after { left: -9px; bottom: auto; top: 22px; margin: 0; box-shadow: -3px 5px 8px rgba(35, 45, 80, .15); }
+.kiki-say { margin: 0; position: relative; z-index: 1; }
+.kiki-links { display: flex; flex-wrap: wrap; gap: 6px; position: relative; z-index: 1; }
+.kiki-links:not(:empty) { margin-top: 10px; }
+.kiki-links a, .kiki-links button {
+    font: inherit; font-size: 13px; font-weight: 800; text-decoration: none; cursor: pointer; border: 0;
+    color: #fff; background: linear-gradient(145deg, #6573E6, #4C5BD4); padding: 7px 13px; border-radius: 999px;
+    display: inline-flex; align-items: center; gap: 6px;
+    box-shadow: 3px 4px 8px rgba(52, 66, 181, .3), inset 2px 2px 4px rgba(255, 255, 255, .45);
+    transition: transform .2s cubic-bezier(.34, 1.56, .64, 1);
+}
+.kiki-links a:hover, .kiki-links button:hover { transform: translateY(-2px) scale(1.04); }
+@keyframes kikiBubbleIn { from { opacity: 0; scale: .7; } }
+
+/* "tap for sound" hint */
+.kiki-hint {
+    position: fixed; left: 0; top: 0; z-index: 821; border: 0; cursor: pointer;
+    font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 800; color: #3442B5;
+    background: #FFFFFF; padding: 6px 12px; border-radius: 999px;
+    box-shadow: 4px 5px 12px rgba(35, 45, 80, .28), inset 2px 2px 4px #fff;
+    opacity: 0; pointer-events: none; transition: opacity .3s;
+}
+.kiki-hint.on { opacity: 1; pointer-events: auto; animation: kikiWiggle 2.2s ease-in-out infinite; }
+@keyframes kikiWiggle { 0%, 80%, 100% { rotate: 0deg; } 85% { rotate: -5deg; } 92% { rotate: 5deg; } }
+
+/* ---------- ask card ---------- */
+.kiki-ask {
+    position: fixed; left: 0; top: 0; z-index: 830; width: min(340px, calc(100vw - 20px));
+    background: #FFFFFF; border-radius: 28px; padding: 14px;
+    box-shadow: 14px 16px 32px rgba(35, 45, 80, .3), -8px -8px 20px rgba(255, 255, 255, .95),
+                inset -6px -8px 16px rgba(35, 45, 80, .05), inset 6px 6px 14px #fff;
+    font-family: 'Inter', system-ui, sans-serif; color: #1C2130;
+    opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+.kiki-ask.on { opacity: 1; pointer-events: auto; animation: kikiBubbleIn .35s cubic-bezier(.34, 1.56, .64, 1); }
+.kiki-ask-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0 2px 8px 6px; }
+.kiki-ask-top strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 16px; }
+.kiki-x { width: 30px; height: 30px; border-radius: 50%; border: 0; cursor: pointer; background: transparent; color: #586072; }
+.kiki-x:hover { background: #E2E5FA; color: #3442B5; }
+
+.kiki-thoughts { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 4px 12px; }
+.kiki-thought {
+    font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; border: 0; color: #3442B5;
+    background: linear-gradient(145deg, #F4F5FD, #E2E5FA); padding: 8px 13px; border-radius: 18px 18px 18px 6px;
+    box-shadow: 3px 4px 9px rgba(122, 92, 201, .18), inset 2px 2px 4px rgba(255, 255, 255, .8);
+    animation: kikiFloat 3.6s ease-in-out infinite;
+    transition: transform .2s;
+}
+.kiki-thought:nth-child(2n) { background: linear-gradient(145deg, #FFF0F4, #E2E5FA); color: #A8406A; border-radius: 18px 18px 6px 18px; }
+.kiki-thought:nth-child(3n) { background: linear-gradient(145deg, #EFF7F4, #D5ECE4); color: #2D7A64; }
+.kiki-thought:hover { scale: 1.06; }
+@keyframes kikiFloat { 50% { translate: 0 -4px; } }
+
+.kiki-type { display: flex; gap: 8px; align-items: center; }
+.kiki-type input {
+    flex: 1; min-width: 0; font: inherit; font-size: 15px; font-weight: 600; color: #1C2130; border: 0; outline: none;
+    background: #F3F2EF; padding: 12px 16px; border-radius: 999px;
+    box-shadow: inset 3px 3px 7px rgba(35, 45, 80, .25), inset -3px -3px 7px #fff;
+}
+.kiki-mic, .kiki-send {
+    width: 44px; height: 44px; flex-shrink: 0; border-radius: 50%; border: 0; cursor: pointer; font-size: 16px;
+    display: inline-flex; align-items: center; justify-content: center; color: #fff;
+    background: linear-gradient(145deg, #6573E6, #4C5BD4);
+    box-shadow: 4px 5px 10px rgba(52, 66, 181, .3), inset 2px 2px 4px rgba(255, 255, 255, .45);
+}
+.kiki-send { background: linear-gradient(145deg, #D6F6E8, #9EDCC1); color: #23705A; }
+.kiki-mic.on { animation: kikiMic 1.1s ease-in-out infinite; }
+@keyframes kikiMic { 0%, 100% { box-shadow: 0 0 0 0 rgba(76, 91, 212, .6); } 50% { box-shadow: 0 0 0 12px rgba(76, 91, 212, 0); } }
+
+/* glow on the part of the page she's showing you */
+.kiki-glow { outline: 4px solid #4C5BD4 !important; outline-offset: 8px; animation: kikiGlow 1.1s ease-in-out 3; }
+@keyframes kikiGlow { 50% { outline-color: rgba(76, 91, 212, .2); } }
+
+@media (max-width: 640px) {
+    .kiki-ask { left: 10px !important; right: 10px; bottom: 10px; top: auto !important; width: auto; transform: none !important; }
+    .kiki-bubble { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .kiki-bubble.on, .kiki-ask.on, .kiki-hint.on, .kiki-thought, .kiki-zzz i { animation: none; }
+}
+
+/* ---------- emotes above her head ---------- */
+.kiki-emote { position: fixed; left: 0; top: 0; z-index: 815; pointer-events: none; width: 0; height: 0; }
+.kiki-emote i {
+    position: absolute; left: calc(var(--i) * 18px - 8px); top: 0; font-size: 20px; opacity: 0;
+    filter: drop-shadow(0 2px 3px rgba(35, 45, 80, .2));
+}
+.kiki-emote.on i { animation: kikiEmote 1.8s cubic-bezier(.34, 1.56, .64, 1) forwards; animation-delay: calc(var(--i) * .12s); }
+.kiki-emote.e-heart i, .kiki-emote.e-grr i { color: #E8566C; }
+.kiki-emote.e-sparkle i, .kiki-emote.e-star i, .kiki-emote.e-dizzy i, .kiki-emote.e-bulb i { color: #E3A82B; }
+.kiki-emote.e-question i, .kiki-emote.e-excl i, .kiki-emote.e-music i { color: #4C5BD4; }
+.kiki-emote.e-question i, .kiki-emote.e-excl i, .kiki-emote.e-grr i { font-size: 26px; }
+.kiki-emote.e-dizzy i { font-size: 13px; animation-name: kikiDizzy !important; }
+@keyframes kikiEmote {
+    0% { opacity: 0; transform: translateY(10px) scale(.3); }
+    25% { opacity: 1; transform: translateY(-8px) scale(1.1); }
+    70% { opacity: 1; transform: translateY(-22px) scale(1); }
+    100% { opacity: 0; transform: translateY(-40px) scale(.8); }
+}
+@keyframes kikiDizzy {
+    0% { opacity: 0; transform: rotate(0) translateX(26px) rotate(0); }
+    15%, 80% { opacity: 1; }
+    100% { opacity: 0; transform: rotate(720deg) translateX(26px) rotate(-720deg); }
+}
+
+/* ---------- entrances ---------- */
+.kiki-chute { position: fixed; left: 0; top: 0; z-index: 799; width: 150px; pointer-events: none; opacity: 0; transition: opacity .4s; }
+.kiki-chute.on { opacity: 1; animation: kikiChute 2.4s ease-in-out infinite; transform-origin: 50% 100%; }
+.kiki-chute.away { opacity: 0; transition: opacity .8s, translate .8s; translate: 0 -120px; }
+@keyframes kikiChute { 50% { rotate: 4deg; } }
+.kiki-rope {
+    position: fixed; top: 0; left: 0; width: 4px; margin-left: -2px; z-index: 799; pointer-events: none; opacity: 0;
+    background: repeating-linear-gradient(180deg, #B58A5A 0 6px, #8A6440 6px 12px); border-radius: 2px;
+}
+.kiki-rope.on { opacity: 1; }
+.kiki-rope.away { opacity: 0; transition: opacity .6s; }
+.kiki-body.kiki-popin canvas { animation: kikiPopIn .8s cubic-bezier(.34, 1.56, .64, 1); }
+@keyframes kikiPopIn { from { transform: scale(0) translateY(40%); } }
+
+/* a tag she kicked */
+.kiki-kicked { display: inline-block; animation: kikiKicked 1s cubic-bezier(.34, 1.56, .64, 1); }
+@keyframes kikiKicked {
+    20% { transform: translate(14px, -26px) rotate(25deg); }
+    45% { transform: translate(22px, 0) rotate(40deg); }
+    65% { transform: translate(14px, -8px) rotate(10deg); }
+    100% { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .kiki-emote.on i, .kiki-kicked, .kiki-chute.on, .kiki-body.kiki-popin canvas { animation: none; }
+    .kiki-emote.on i { opacity: 1; }
+}
+
+/* listening state: a clear, pulsing mic so visitors know to talk */
+.kiki-ask.listening .kiki-type input { box-shadow: inset 0 0 0 2px #4C5BD4; }
+.kiki-ask.listening .kiki-ask-top strong::after { content: '  · listening…'; color: #4C5BD4; font-weight: 600; }
+.kiki-ears { margin: 0 6px 8px; min-height: 0; font-size: 12px; font-weight: 700; color: #4C5BD4; line-height: 1.4; }
+.kiki-ears:empty { display: none; }

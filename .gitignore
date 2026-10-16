@@ -84,3 +84,6 @@ temp/
 # *.mov
 # *.avi
 # *.mkv
+
+# Kiki: private notes behind her answers (not for the public site)
+kiki/knowledge/
