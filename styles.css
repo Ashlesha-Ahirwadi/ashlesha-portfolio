@@ -169,13 +169,12 @@ main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
 .job-top > div { flex: 1; min-width: 180px; }
 .job h3 { font-size: 22px; }
 .job-co { color: var(--ink-soft); font-weight: 700; font-size: 15px; }
+.job-co a { color: var(--accent); text-decoration: none; }
+.job-co a:hover { text-decoration: underline; }
 .job ul { padding-left: 20px; margin-bottom: 16px; color: var(--ink-soft); }
 .job li { margin-bottom: 8px; }
 .job li::marker { color: var(--accent); }
 .jobs-small { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-.job-feature { background: linear-gradient(160deg, #FBFAF8, #ECEAF7); }
-.job-lede { color: var(--ink); font-size: 16px; margin-bottom: 12px; }
-.job-links { margin-bottom: 16px; }
 .job-sm h3 { font-size: 18px; }
 .job-sm p { color: var(--ink-soft); font-size: 15px; }
 
