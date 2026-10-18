@@ -67,11 +67,16 @@
     /* ================================================================== */
     /* 3D bear                                                             */
     /* ================================================================== */
-    var small, BW, BH;
+    // Phone mode ("compact"): small screens or touch-only devices. Kiki stays docked in the
+    // bottom-right corner instead of walking over content, and the card in the middle of the
+    // screen stands in for hover.
+    var small, compact, BW, BH;
     function measure() {
-        small = window.innerWidth < 640;
-        BW = small ? 168 : 250; BH = small ? 190 : 282;
+        compact = window.innerWidth < 760 || !window.matchMedia('(hover: hover)').matches;
+        small = compact;
+        BW = compact ? 118 : 250; BH = compact ? 134 : 282;
         box.style.width = BW + 'px'; box.style.height = BH + 'px';
+        document.body.classList.toggle('kiki-compact', compact);
     }
     measure();
     var bear = makeBear(box, BW, BH);
@@ -530,14 +535,15 @@
         return new Promise(function (resolve) {
             perch = null; fall = null; offEdge = !!opts.offEdge;
             if (bear.getMode() === 'sit') bear.mode('idle');
+            if (compact) { arrive(); return; }
             var d = dest();
             if (reduced) { pos.x = d.x; pos.y = d.y; arrive(); return; }
             walk = { dest: dest, sx: pos.x, sy: pos.y, dist: Math.hypot(d.x - pos.x, d.y - pos.y) || 1, done: arrive, fast: opts.fast, until: opts.until };
             bear.mode('walk');
             function arrive() {
                 walk = null; bear.mode('idle'); bear.face(0);
-                if (opts.perch) perch = opts.perch;
-                bear.act('land');
+                if (opts.perch && !compact) perch = opts.perch;
+                if (!compact) bear.act('land');
                 resolve();
             }
         });
@@ -552,8 +558,10 @@
             return { x: opts.offEdge ? x : clamp(x, BW / 2, window.innerWidth - BW / 2), y: floorY() };
         }, opts);
     }
+    function dockPoint() { return { x: window.innerWidth - BW / 2 - 4, y: floorY() }; }
     function dropFrom(x, y, onLand, opts) {
         opts = opts || {};
+        if (compact) { perch = null; walk = null; fall = null; setTimeout(function () { onLand && onLand(); }, 0); return; }
         perch = null; walk = null;
         pos.x = x; pos.y = y;
         fall = { vy: opts.vy || 0, done: onLand, maxV: opts.maxV || 4000, sway: opts.sway || 0, x0: x, t: 0, skip: opts.skip };
@@ -575,7 +583,9 @@
     var lastT = performance.now();
     (function tick(now) {
         var dt = Math.min((now - lastT) / 1000, .05); lastT = now;
-        if (drag) {
+        if (compact) {
+            var dk = dockPoint(); pos.x = dk.x; pos.y = dk.y; perch = null; fall = null;
+        } else if (drag) {
             pos.x = drag.x; pos.y = drag.y + BH * (bear.foot - .25);
         } else if (fall) {
             fall.t += dt;
@@ -609,7 +619,7 @@
 
         // hop arc while walking between heights
         var hop = 0;
-        if (walk && !reduced) {
+        if (walk && !reduced && !compact) {
             var d2 = walk.dest(), left = Math.hypot(d2.x - pos.x, d2.y - pos.y), prog = 1 - left / walk.dist;
             if (Math.abs(d2.y - walk.sy) > 30) hop = Math.sin(clamp(prog, 0, 1) * Math.PI) * Math.min(140, 50 + Math.abs(d2.y - walk.sy) * .4);
         }
@@ -634,8 +644,9 @@
         var w = bubble.offsetWidth, h = bubble.offsetHeight, vw = window.innerWidth;
         var headTop = by + BH * bear.head, x, y, side = '';
         x = clamp(pos.x - w / 2, 10, vw - w - 10); y = headTop - h - 8;
+        if (compact) x = vw - w - 10;
         if (askOpen) y = Math.min(y, askBox.top - h - 10);
-        if (y < topLimit() - 30) {
+        if (y < topLimit() - 30 && !compact) {
             // no room above her: talk from the side
             y = clamp(headTop + 4, topLimit() - 30, window.innerHeight - h - 10);
             x = bx + BW * .12 - w; side = 'side-left';
@@ -657,7 +668,7 @@
     var askOpen = false, askBox = { top: 0 };
     function placeAsk(bx, by) {
         var w = ask.offsetWidth, h = ask.offsetHeight, vw = window.innerWidth, vh = window.innerHeight;
-        if (small) { askBox.top = vh - h - BH - 4; return; }
+        if (small) { askBox.top = vh - h - BH - 10; return; }
         var x = clamp(pos.x - w / 2, 10, vw - w - 10);
         var y = by + BH * bear.head - h - 6;
         if (y < topLimit() - 20) y = Math.min(pos.y + 10, vh - h - 10);
@@ -821,7 +832,7 @@
     });
     box.addEventListener('pointermove', function (e) {
         if (!press) return;
-        if (!drag && Math.hypot(e.clientX - press.x, e.clientY - press.y) > 8 && !reduced) {
+        if (!drag && Math.hypot(e.clientX - press.x, e.clientY - press.y) > 8 && !reduced && !compact) {
             drag = { x: e.clientX, y: e.clientY }; walk = null; fall = null; perch = null;
             if (deepNap) { deepNap = false; sleeping = false; box.classList.remove('sleeping'); setMuted(false); }
             if (askOpen) closeAsk();
@@ -929,6 +940,7 @@
             if (id === 'hov_resume') { bear.act('present'); emote('star'); }
             else if (id === 'hov_contact' || id === 'hov_photo') { bear.act('wave'); emote('heart'); }
             else { bear.act('point', dir); emote(pick(['sparkle', 'star', 'bulb'])); }
+            if (compact && !repeatable) glow(t);   // on phones, show which card she means
             return say(id);
         });
         hoverP = chain.then(function () { if (hoverP === mine) hoverP = null; });
@@ -957,11 +969,25 @@
     }, { rootMargin: '-35% 0px -45% 0px' });
     document.querySelectorAll('main section[id]').forEach(function (s) { sectionIO.observe(s); });
 
+    function centered(elm) {
+        var r = elm.getBoundingClientRect(), vh = window.innerHeight;
+        return r.width > 0 && r.top < vh * .62 && r.bottom > vh * .3;
+    }
+    // Phones have no hover: the card that stays in the middle of the screen for a moment
+    // gets described instead (same no-repeat memory as hover and the tour).
+    var centerEl = null, centerSince = 0;
+    setInterval(function () {
+        if (!compact || document.hidden) return;
+        var hit = document.elementFromPoint(window.innerWidth / 2, window.innerHeight * .45);
+        var t = hit && hit.closest && hit.closest('[data-say]');
+        if (t !== centerEl) { centerEl = t; centerSince = performance.now(); hoverEl = t; return; }
+        if (t && performance.now() - centerSince > 1100) { hoverEl = t; describe(t); centerSince = Infinity; }
+    }, 300);
     function waitVisible(elm, ms) {
         return new Promise(function (resolve) {
             var t0 = performance.now();
             (function check() {
-                if (perchVisible(elm)) resolve(true);
+                if (compact ? centered(elm) : perchVisible(elm)) resolve(true);
                 else if (performance.now() - t0 > ms) resolve(false);
                 else setTimeout(check, 250);
             })();
@@ -986,8 +1012,8 @@
                 bear.prop(b.prop || null);
                 return walkToPerch(elm, b.fx == null ? rand(.25, .75) : b.fx).then(function () {
                     if (touring !== id) return;
-                    if (b.sit) bear.mode('sit');
-                    if (b.glow) glow(elm);
+                    if (b.sit && !compact) bear.mode('sit');
+                    if (b.glow || (compact && !isHead)) glow(elm);
                     if (b.glowSel) glow(document.querySelector(b.glowSel));
                     if (b.emote) emote(b.emote);
                     if (b.pose) bear.act(b.pose, 1);
@@ -1154,10 +1180,12 @@
         ['perchHop', 18], ['sitSwing', 10], ['kickTag', 8], ['peek', 6], ['slide', 6], ['chase', 5], ['stroll', 8],
         ['dance', 6], ['spin', 4], ['jump', 4], ['stretch', 6], ['sneeze', 4], ['trip', 3], ['read', 6], ['waveAtCursor', 6]
     ];
+    var IN_PLACE = ['dance', 'spin', 'jump', 'stretch', 'sneeze', 'trip', 'read', 'waveAtCursor'];
     function pickPlay() {
-        var total = PLAY_WEIGHTS.reduce(function (s, w) { return s + w[1]; }, 0), r = Math.random() * total;
-        for (var i = 0; i < PLAY_WEIGHTS.length; i++) { r -= PLAY_WEIGHTS[i][1]; if (r <= 0) return PLAY_WEIGHTS[i][0]; }
-        return 'stroll';
+        var list = compact ? PLAY_WEIGHTS.filter(function (w) { return IN_PLACE.indexOf(w[0]) > -1; }) : PLAY_WEIGHTS;
+        var total = list.reduce(function (s, w) { return s + w[1]; }, 0), r = Math.random() * total;
+        for (var i = 0; i < list.length; i++) { r -= list[i][1]; if (r <= 0) return list[i][0]; }
+        return compact ? 'stretch' : 'stroll';
     }
     var playing = false;
     function roam() {
@@ -1230,6 +1258,10 @@
             });
         };
         if (reduced) { box.classList.add('on'); pos.x = window.innerWidth - BW; pos.y = floorY(); intro(); }
+        else if (compact) setTimeout(function () {
+            box.classList.add('on', 'kiki-popin'); bear.act('jump'); emote('sparkle');
+            setTimeout(function () { box.classList.remove('kiki-popin'); intro(); }, 900);
+        }, 450);
         else setTimeout(function () {
             box.classList.add('on');
             ENTRANCES[pick(Object.keys(ENTRANCES))](startX(), function () { setTimeout(intro, 250); });

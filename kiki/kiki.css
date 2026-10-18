@@ -112,10 +112,16 @@
 .kiki-glow { outline: 4px solid #4C5BD4 !important; outline-offset: 8px; animation: kikiGlow 1.1s ease-in-out 3; }
 @keyframes kikiGlow { 50% { outline-color: rgba(76, 91, 212, .2); } }
 
-@media (max-width: 640px) {
-    .kiki-ask { left: 10px !important; right: 10px; bottom: 10px; top: auto !important; width: auto; transform: none !important; }
-    .kiki-bubble { font-size: 14px; }
+/* ---------- phone mode: Kiki docked bottom-right ---------- */
+body.kiki-compact .kiki-ask {
+    left: 10px !important; right: 10px; bottom: 144px; top: auto !important; width: auto; transform: none !important;
 }
+body.kiki-compact .kiki-bubble {
+    font-size: 13.5px; line-height: 1.4; padding: 10px 14px; border-radius: 18px;
+    max-width: min(300px, calc(100vw - 20px));
+}
+body.kiki-compact .kiki-hint { font-size: 11px; }
+body.kiki-compact .kiki-emote i { font-size: 15px; }
 @media (prefers-reduced-motion: reduce) {
     .kiki-bubble.on, .kiki-ask.on, .kiki-hint.on, .kiki-thought, .kiki-zzz i { animation: none; }
 }
