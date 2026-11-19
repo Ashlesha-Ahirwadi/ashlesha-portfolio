@@ -3,9 +3,9 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Landlord Setup Redesign</title>
 <style>
-:root{--bg:#f6f7f6;--ink:#16211b;--mute:#5f6b64;--line:#e4e9e5;--panel:#fff}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111513;--ink:#e8eee9;--mute:#9aa69f;--line:#26302a;--panel:#161b18}}
-:root[data-theme="dark"]{--bg:#111513;--ink:#e8eee9;--mute:#9aa69f;--line:#26302a;--panel:#161b18}
+:root{--bg:#f6f7f6;--ink:#16211b;--mute:#5f6b64;--line:#e4e9e5;--panel:#fff;--acc:#2f7d3b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111513;--ink:#e8eee9;--mute:#9aa69f;--line:#26302a;--panel:#161b18;--acc:#8fd68c}}
+:root[data-theme="dark"]{--bg:#111513;--ink:#e8eee9;--mute:#9aa69f;--line:#26302a;--panel:#161b18;--acc:#8fd68c}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 -apple-system,"Inter",system-ui,sans-serif}
 .page{max-width:1120px;margin:0 auto;padding:24px 16px 32px}
@@ -16,88 +16,97 @@ h1{font-size:21px;margin:0 0 2px}.sub{color:var(--mute);margin:0 0 18px}
 .label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
 .before img{width:100%;border-radius:8px;border:1px solid var(--line);display:block}
 .cap{color:var(--mute);font-size:12.5px;margin-top:8px}
+.cap b{color:var(--ink)}
 
-/* ---------- AFTER: drawn in Landlord's own style (light site) ---------- */
+/* ---------- AFTER: drawn in Landlord's own style ---------- */
 .site{--s-ink:#16211b;--s-mute:#7d8781;--s-faint:#c3cac5;--s-line:#e6eae7;--s-green:#6cc06a;--s-greenD:#4f9f52;
   background:#fff;color:var(--s-ink);border-radius:10px;padding:22px 20px 18px;border:1px solid var(--line)}
-.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
 .site h2{font-size:24px;font-weight:500;letter-spacing:-.01em;margin:0 0 4px}
 .site .lead{color:var(--s-mute);margin:0 0 18px;font-size:15px}
-.wrap{display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:center}
-@media(max-width:600px){.wrap{grid-template-columns:1fr}}
+.wrap{display:grid;grid-template-columns:180px 1fr;gap:20px;align-items:center}
 
-/* compressed version of their timeline */
+/* compressed timeline */
 .tl{list-style:none;margin:0;padding:0 0 0 18px;position:relative}
-.tl:before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:var(--s-line)}
-.tl .fill{position:absolute;left:5px;top:8px;width:1px;background:var(--s-green);transition:height .5s ease}
-.tl li{position:relative;padding:4px 0;cursor:pointer;color:var(--s-faint);font-size:13.5px;transition:color .3s}
-.tl li:before{content:"";position:absolute;left:-17px;top:10px;width:9px;height:9px;border-radius:50%;background:#fff;border:1px solid var(--s-faint);transition:all .3s}
+.tl:before{content:"";position:absolute;left:5px;top:22px;bottom:8px;width:1px;background:var(--s-line)}
+.tl .fill{position:absolute;left:5px;top:22px;width:1px;background:var(--s-green);transition:height .5s ease}
+.tl li{position:relative;padding:3px 0;cursor:pointer;color:var(--s-faint);font-size:13.5px;transition:color .3s}
+.tl li.st:before{content:"";position:absolute;left:-17px;top:9px;width:9px;height:9px;border-radius:50%;background:#fff;border:1px solid var(--s-faint);transition:all .3s}
+.tl li.ph{cursor:default;font:10px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:var(--s-mute);padding:9px 0 2px;text-transform:uppercase}
+.tl li.ph:first-of-type{padding-top:0}
 .tl li.done{color:var(--s-mute)}.tl li.done:before{background:var(--s-green);border-color:var(--s-green)}
 .tl li.cur{color:var(--s-ink);font-weight:500}.tl li.cur:before{background:var(--s-green);border-color:var(--s-green);box-shadow:0 0 0 4px #6cc06a33}
 .tl li:focus{outline:none}.tl li:focus-visible{text-decoration:underline}
-.you{font-family:ui-monospace,Menlo,monospace;font-size:10px;color:var(--s-greenD);border:1px solid #6cc06a66;border-radius:4px;padding:0 4px;margin-left:5px;vertical-align:1px}
+.you{font:10px ui-monospace,Menlo,monospace;color:var(--s-greenD);border:1px solid #6cc06a66;border-radius:4px;padding:0 4px;margin-left:5px;vertical-align:1px;font-weight:400}
 
-/* the stage card */
+/* stage */
+.mtitle{display:none;font-size:15px;font-weight:500;margin:0 0 8px}
+.mtitle>span:first-child{display:block;font:11px ui-monospace,Menlo,monospace;color:var(--s-mute);margin-bottom:2px}
 .stage{position:relative;height:300px;border:1px solid var(--s-line);border-radius:16px;overflow:hidden;background:#fff}
 .ring{position:absolute;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;transition:opacity .6s,transform .6s}
 .ring svg{width:100%;height:100%;overflow:visible}
 .ring .spin{animation:spin 26s linear infinite;transform-origin:0 0}
 @keyframes spin{to{transform:rotate(360deg)}}
-.ring text{font-family:ui-monospace,Menlo,monospace;font-size:8.6px;letter-spacing:2.6px;fill:var(--s-green)}
+.ring .lbl{font:8.6px ui-monospace,Menlo,monospace;letter-spacing:2.6px;fill:var(--s-green)}
+.ring .shell{fill:none;stroke:var(--s-green);stroke-width:.8;opacity:.5;stroke-dasharray:390;stroke-dashoffset:0}
 .ring .core{fill:#fff;stroke:var(--s-green);stroke-width:1}
-.ring .nm{font-family:ui-monospace,Menlo,monospace;font-size:11px;fill:var(--s-greenD);text-anchor:middle;dominant-baseline:central;letter-spacing:0}
+.ring .lvl{fill:var(--s-green);opacity:.16;transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0)}
+.ring .nm{font:11px ui-monospace,Menlo,monospace;fill:var(--s-greenD);text-anchor:middle;dominant-baseline:central}
+.ring .heart{transform-origin:0 0}
 .stage[data-step="1"] .ring{opacity:0;transform:scale(.7)}
-.stage[data-step="2"] .ring{animation:boot 1.2s ease}
-@keyframes boot{0%{opacity:0;transform:scale(.6)}60%{opacity:1;transform:scale(1.06)}100%{transform:scale(1)}}
 
-.scene{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .4s}
+.scene{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s}
 .scene.on{opacity:1}
-.t{position:absolute;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:var(--s-mute);white-space:nowrap}
+.t{position:absolute;font:11.5px ui-monospace,Menlo,monospace;color:var(--s-mute);white-space:nowrap}
 .g{color:var(--s-greenD)}
 .foot-t{left:0;right:0;bottom:12px;text-align:center;font-size:11px;color:var(--s-faint)}
+.flow{opacity:0}
 
 /* 1 name picker */
 .slot{position:absolute;left:50%;top:50%;width:170px;height:110px;margin:-55px 0 0 -85px;overflow:hidden;text-align:center}
-.slot .lst{animation:roll 1.9s cubic-bezier(.15,.7,.2,1) forwards}
-.slot .lst div{height:22px;line-height:22px;font-family:ui-monospace,Menlo,monospace;font-size:14px;color:var(--s-faint)}
-.slot .lst div.pick{color:var(--s-greenD)}
+.slot .lst div{height:22px;line-height:22px;font:14px ui-monospace,Menlo,monospace;color:var(--s-faint);transition:color .3s}
+.slot .lst div.pick.landed{color:var(--s-greenD)}
 .slot:before,.slot:after{content:"";position:absolute;left:10px;right:10px;height:1px;background:var(--s-faint)}
 .slot:before{top:44px}.slot:after{top:66px}
-@keyframes roll{from{transform:translateY(0)}to{transform:translateY(-198px)}}
-
-/* streams (words travelling into / out of the ring) */
-.flow-in,.flow-out{opacity:0}
 
 /* 4 email */
-.env{position:absolute;left:50%;top:50%;width:20px;height:14px;margin:-7px 0 0 -10px;animation:mail 1.6s ease-in-out .3s forwards;opacity:0}
-@keyframes mail{0%{opacity:0;transform:translate(0,0)}15%{opacity:1}100%{opacity:1;transform:translate(118px,-22px)}}
-.boss{position:absolute;left:calc(50% + 120px);top:calc(50% - 50px)}
-.bubble{position:absolute;left:calc(50% + 70px);top:calc(50% + 4px);font-size:11px;line-height:1.35;width:130px;white-space:normal;opacity:0;animation:pop .5s ease 1.8s forwards}
-@keyframes pop{to{opacity:1}}
+.env{position:absolute;left:50%;top:50%;width:20px;height:14px;margin:-7px 0 0 -10px;opacity:0}
+.boss{position:absolute;left:calc(50% + 120px);top:calc(50% - 50px);text-align:center}
+.bubble{position:absolute;left:calc(50% + 72px);top:calc(50% + 6px);font-size:11px;line-height:1.35;width:128px;white-space:normal;opacity:0}
 
 /* 5 channels */
 .wires{position:absolute;inset:0;width:100%;height:100%}
-.wires path{fill:none;stroke:var(--s-green);stroke-width:1;stroke-dasharray:200;stroke-dashoffset:200;animation:draw 1s ease forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-.chan{opacity:0;animation:pop .4s ease both}
+.wires path{fill:none;stroke:var(--s-green);stroke-width:1}
 
-/* 7 rehearse counter, 8 note */
+/* 7 counter, 8 note */
 .count{left:0;right:0;bottom:14px;text-align:center;font-size:12px;color:var(--s-mute)}
 .count b{color:var(--s-greenD);font-weight:600}
-.note{position:absolute;right:10px;top:50%;margin-top:-30px;width:132px;border:1px solid var(--s-line);border-radius:8px;padding:8px 10px;font-size:11px;line-height:1.4;white-space:normal;background:#fff}
+.note{position:absolute;right:10px;top:50%;margin-top:-30px;width:132px;border:1px solid var(--s-line);border-radius:8px;padding:8px 10px;font:11px/1.4 ui-monospace,Menlo,monospace;background:#fff}
 .note .ok{opacity:0;color:var(--s-greenD);margin-top:4px;transition:opacity .4s}.note .ok.show{opacity:1}
 .caret{display:inline-block;width:6px;height:11px;background:var(--s-greenD);vertical-align:-1px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
+.badge{position:absolute;right:14px;top:12px;font:10px ui-monospace,Menlo,monospace;color:var(--s-greenD);border:1px solid #6cc06a66;border-radius:99px;padding:2px 8px}
 
-.desc{color:var(--s-mute);font-size:13.5px;margin:10px 2px 0;min-height:20px}
-.ctrl{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:10px;flex-wrap:wrap}
-.ctrl button{font:inherit;font-size:12px;color:var(--s-mute);background:none;border:1px solid var(--s-line);border-radius:6px;padding:4px 10px;cursor:pointer}
+/* segmented progress (one segment per step, fills like a timer) */
+.segs{display:grid;grid-template-columns:repeat(9,1fr);gap:4px;margin-top:10px}
+.segs span{height:3px;background:var(--s-line);border-radius:2px;overflow:hidden;cursor:pointer}
+.segs i{display:block;height:100%;width:0;background:var(--s-green)}
+.desc{color:var(--s-mute);font-size:13.5px;margin:9px 2px 0;min-height:20px}
+.ctrl{display:flex;justify-content:space-between;align-items:center;margin-top:14px;gap:10px;flex-wrap:wrap}
+.ctrl button{font:12px ui-monospace,Menlo,monospace;color:var(--s-mute);background:none;border:1px solid var(--s-line);border-radius:6px;padding:4px 10px;cursor:pointer}
 .btn{background:var(--s-green);color:#fff;font-weight:600;border-radius:8px;padding:8px 16px;font-size:13px}
-.prog{height:2px;background:var(--s-line);border-radius:2px;margin-top:10px;overflow:hidden}
-.prog i{display:block;height:100%;width:0;background:var(--s-green);transition:width .5s}
 
-.think{margin-top:18px}.think h3{font-size:15px;margin:0 0 6px}
-.think ul{margin:0;padding-left:18px}.think li{margin:5px 0}
+@media(max-width:600px){
+  .wrap{grid-template-columns:1fr}.tl{display:none}.mtitle{display:block}
+  .stage{height:260px}
+}
+
+/* thinking */
+.think{margin-top:18px}.think h3{font-size:15px;margin:0 0 10px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
+.steps>div{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.steps .k{font:10.5px ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin-bottom:3px}
+.steps p{margin:0;font-size:13.5px}
 .foot{margin-top:14px;color:var(--mute);font-size:12px}
 @media (prefers-reduced-motion:reduce){.ring .spin{animation:none}}
 </style></head>
@@ -109,66 +118,61 @@ h1{font-size:21px;margin:0 0 2px}.sub{color:var(--mute);margin:0 0 18px}
   <div class="panel before">
     <div class="label">Before · uselandlord.com</div>
     <img src="before.jpg" alt="Current setup section: one step per screen on a long vertical timeline with large empty gaps">
-    <div class="cap">9 steps, each alone on a mostly empty screen. The animations are lovely, but it takes about 9 scrolls to see them all, there's no time estimate, and nothing shows which steps need the owner.</div>
+    <div class="cap"><b>About 7 screens tall</b> (6,580px on a laptop) and <b>roughly half the homepage</b>. One step per screen, big empty gaps, no time estimate, and nothing shows which steps need the owner.</div>
   </div>
 
   <div class="panel">
-    <div class="label">After · one screen, same animations, no gaps</div>
+    <div class="label">After · one screen</div>
     <div class="site">
       <h2>Live in a few days.</h2>
-      <p class="lead">Your part: a 30-minute planning call and a few quick check-ins.</p>
+      <p class="lead">Your part: one 30-minute call and a few quick check-ins.</p>
 
       <div class="wrap">
         <ol class="tl" id="tl"><span class="fill" id="fill"></span></ol>
 
         <div>
+          <p class="mtitle" id="mtitle"></p>
           <div class="stage" id="stage" data-step="1">
-            <!-- persistent AI ring (their "secure isolated server" motif) -->
             <div class="ring" aria-hidden="true">
               <svg viewBox="-75 -75 150 150">
-                <defs><path id="rp" d="M0,-50 a50,50 0 1,1 -0.01,0"/></defs>
-                <g class="spin"><text><textPath href="#rp">SECURE · ISOLATED · SERVER · SECURE · ISOLATED · SERVER ·</textPath></text></g>
-                <circle class="core" r="24"/>
-                <text class="nm" id="nm">Paulo</text>
+                <defs>
+                  <path id="rp" d="M0,-50 a50,50 0 1,1 -0.01,0"/>
+                  <clipPath id="cc"><circle r="24"/></clipPath>
+                </defs>
+                <circle class="shell" id="shell" r="62"/>
+                <g class="spin"><text class="lbl"><textPath href="#rp">SECURE · ISOLATED · SERVER · SECURE · ISOLATED · SERVER ·</textPath></text></g>
+                <g class="heart" id="heart">
+                  <circle class="core" r="24"/>
+                  <rect class="lvl" id="lvl" x="-24" y="-24" width="48" height="48" clip-path="url(#cc)"/>
+                  <circle r="24" fill="none" stroke="#6cc06a" stroke-width="1"/>
+                  <text class="nm">Paulo</text>
+                </g>
               </svg>
             </div>
 
-            <!-- 1 name -->
-            <div class="scene" data-s="1">
-              <div class="slot"><div class="lst" id="lst"></div></div>
-            </div>
-            <!-- 2 wakes up -->
-            <div class="scene" data-s="2"><div class="t foot-t">isolated server · only trusted teammates can give it instructions</div></div>
-            <!-- 3 research: stream in -->
-            <div class="scene" data-s="3"><div class="t foot-t">reading your website, socials, prices and FAQs</div></div>
-            <!-- 4 email -->
+            <div class="scene" data-s="1"><div class="slot"><div class="lst" id="lst"></div></div></div>
+            <div class="scene" data-s="2"><div class="t foot-t">locked down · only your team can give it instructions</div></div>
+            <div class="scene" data-s="3"><div class="t foot-t">knowledge <span class="g" id="k3">0%</span></div></div>
             <div class="scene" data-s="4">
-              <svg class="env" viewBox="0 0 20 14"><rect x=".5" y=".5" width="19" height="13" rx="1.5" fill="#fff" stroke="#6cc06a"/><path d="M1 1l9 7 9-7" fill="none" stroke="#6cc06a"/></svg>
+              <svg class="env" id="env" viewBox="0 0 20 14"><rect x=".5" y=".5" width="19" height="13" rx="1.5" fill="#fff" stroke="#6cc06a"/><path d="M1 1l9 7 9-7" fill="none" stroke="#6cc06a"/></svg>
               <div class="boss"><svg width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="11" r="7" fill="none" stroke="#c3cac5"/><path d="M4 33c1-8 6-12 13-12s12 4 13 12" fill="none" stroke="#c3cac5"/></svg><div class="t" style="position:static;font-size:10px">you</div></div>
-              <div class="t bubble">"Hi, I'm Paulo. Here's what I still need from you..."</div>
+              <div class="t bubble" id="bubble">"Hi, I'm Paulo. Here's what I still need from you..."</div>
             </div>
-            <!-- 5 channels -->
             <div class="scene" data-s="5" id="s5"></div>
-            <!-- 6 train -->
-            <div class="scene" data-s="6"><div class="t foot-t">the more you feed it, the smarter it gets</div></div>
-            <!-- 7 rehearse -->
+            <div class="scene" data-s="6"><div class="t foot-t">knowledge <span class="g" id="k6">30%</span> · the more you feed it, the smarter it gets</div></div>
             <div class="scene" data-s="7"><div class="t count">rehearsed conversations: <b id="cnt">0</b></div></div>
-            <!-- 8 tweaks -->
-            <div class="scene" data-s="8">
-              <div class="note mono"><span id="typed"></span><span class="caret"></span><div class="ok" id="ok">✓ applied instantly</div></div>
-            </div>
-            <!-- 9 live -->
-            <div class="scene" data-s="9"><div class="t foot-t g">live · within your hours or 24/7</div></div>
+            <div class="scene" data-s="8"><div class="note"><span id="typed"></span><span class="caret"></span><div class="ok" id="ok">✓ applied instantly</div></div></div>
+            <div class="scene" data-s="9"><div class="badge">● live · 24/7</div></div>
 
             <div id="streams"></div>
           </div>
+          <div class="segs" id="segs"></div>
           <p class="desc" id="desc"></p>
-          <div class="prog"><i id="bar"></i></div>
         </div>
       </div>
 
       <div class="ctrl">
-        <button id="play" type="button">Pause</button>
+        <button id="play" type="button">❚❚ pause</button>
         <span class="btn">Book a Demo</span>
       </div>
     </div>
@@ -177,93 +181,124 @@ h1{font-size:21px;margin:0 0 2px}.sub{color:var(--mute);margin:0 0 18px}
 
 <div class="think panel">
   <h3>My thinking</h3>
-  <ul>
-    <li><b>Answer the owner's first question up top.</b> Before trusting an AI with their customers, an owner wants to know how long setup takes and how much of their time it needs. Your FAQ already answers this, so I moved it into the headline.</li>
-    <li><b>Keep the animations, lose the gaps.</b> The step animations are the best part of this section, but each one sits alone on a mostly empty screen. Here they play one after another in a single card, and the timeline on the left shows the whole setup at once. Click any step to jump to it.</li>
-    <li><b>One continuous story.</b> The AI gets its name in step 1 and keeps it in the ring for every step after. It reads as a new teammate joining, not 9 separate features.</li>
-    <li><b>Show what the owner does.</b> The 4 steps that need the owner are tagged "you". Everything else is the AI.</li>
-    <li><b>Easy to test.</b> You already run Clarity, so comparing scroll depth and time on this section before and after would show whether it works.</li>
-  </ul>
+  <div class="steps">
+    <div><div class="k">Problem</div><p>The setup story is half your homepage. Most visitors scroll past before step 9.</p></div>
+    <div><div class="k">Owner's question</div><p>"How long, and how much of my time?" Your FAQ answers it, so I made it the headline.</p></div>
+    <div><div class="k">Keep what works</div><p>Your animations are great. I kept them and removed the empty space between them.</p></div>
+    <div><div class="k">One story</div><p>The AI gets its name in step 1, then visibly fills up with knowledge. A teammate joining, not 9 features.</p></div>
+    <div><div class="k">Owner's part</div><p>4 steps tagged "you". Everything else is the AI.</p></div>
+    <div><div class="k">Measure it</div><p>You already run Clarity. Compare scroll depth and demo clicks before and after.</p></div>
+  </div>
 </div>
-<div class="foot">All step text and card details are from uselandlord.com (setup section and the "How long does it take to setup the AI?" FAQ). Mockup by Ashlesha Ahirwadi.</div>
+<div class="foot">Step details are from uselandlord.com and its "How long does it take to setup the AI?" FAQ. Section height measured Nov 18, 2026 at 1440×900. Mockup by Ashlesha Ahirwadi.</div>
 </div>
 
 <script>
+const PH=["Day 1","Next few days","Go live"];
 const S=[
- {t:"Name your AI",d:"Pick the new member of your team.",you:1},
- {t:"It wakes up in a secure virtual desktop",d:"Only trusted teammates can tell it what to do."},
- {t:"It researches your company",d:"Your website, socials, prices, FAQs, and more."},
- {t:"It emails you an introduction",d:"It introduces itself and asks what it still needs."},
- {t:"Connect your channels",d:"Your AI learns any software you use, just give it access.",you:1},
- {t:"Train it with anything",d:"Call transcripts, price lists, documents, whatever you have.",you:1},
- {t:"It rehearses 1,000 sales conversations",d:"It rehearses objections and edge cases against itself."},
- {t:"Final tweaks",d:"Set your rules; every note applies instantly.",you:1},
- {t:"It starts creating value",d:"Redirect calls, WhatsApps and emails, within your hours or 24/7."}
+ {t:"Pick a name",d:"Choose the newest member of your team.",you:1,ph:0},
+ {t:"It boots up securely",d:"Its own locked-down desktop. Only your team can give it instructions.",ph:1},
+ {t:"It studies your business",d:"Your website, socials, prices and FAQs.",ph:1},
+ {t:"It introduces itself",d:"It emails you, says hi, and asks what it still needs.",ph:1},
+ {t:"Plug in your channels",d:"Phone, WhatsApp, email and any software you use.",you:1,ph:1},
+ {t:"Feed it your docs",d:"Call transcripts, price lists, documents. Whatever you have.",you:1,ph:1},
+ {t:"It practices 1,000 calls",d:"It rehearses objections and edge cases against itself.",ph:1},
+ {t:"Set your rules",d:"Leave a note. It applies instantly.",you:1,ph:2},
+ {t:"It starts selling",d:"Calls, WhatsApps and emails, in your hours or 24/7.",ph:2}
 ];
-const N=S.length,$=id=>document.getElementById(id);
-const stage=$("stage"),tl=$("tl"),streams=$("streams");
+const N=S.length,DUR=4200,$=id=>document.getElementById(id);
+const stage=$("stage"),tl=$("tl"),streams=$("streams"),lvl=$("lvl"),heart=$("heart");
 
-// timeline list
-const items=S.map((s,i)=>{const li=document.createElement("li");li.tabIndex=0;
+// timeline with phase markers
+let lastPh=-1;const items=[];
+S.forEach((s,i)=>{
+  if(s.ph!==lastPh){const p=document.createElement("li");p.className="ph";p.textContent=PH[s.ph];tl.appendChild(p);lastPh=s.ph}
+  const li=document.createElement("li");li.className="st";li.tabIndex=0;
   li.innerHTML=s.t+(s.you?'<span class="you">you</span>':"");
-  li.onclick=()=>{show(i);stop()};li.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();show(i);stop()}};
-  tl.appendChild(li);return li});
+  li.onclick=()=>show(i);li.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();show(i)}};
+  tl.appendChild(li);items.push(li)});
+// segmented progress
+const segs=S.map((s,i)=>{const sp=document.createElement("span");sp.innerHTML="<i></i>";sp.title=s.t;sp.onclick=()=>show(i);$("segs").appendChild(sp);return sp.firstChild});
+// name picker
+const NAMES=["Peter","Pam","Priya","Pia","Pablo","Petra","Perla","Pedro","Patricia","Paula","Paulo","Perla","Petra"];
+NAMES.forEach((n,i)=>{const d=document.createElement("div");d.textContent=n;if(i===10)d.className="pick";$("lst").appendChild(d)});
 
-// name picker list (lands on Paulo)
-["Peter","Pam","Priya","Pia","Pablo","Petra","Perla","Pedro","Patricia","Paula","Paulo","Perla","Petra"].forEach((n,i)=>{
-  const d=document.createElement("div");d.textContent=n;if(i===11-1+0&&n==="Paulo")d.className="pick";$("lst").appendChild(d)});
-[...$("lst").children].forEach(d=>{if(d.textContent==="Paulo")d.className="pick"});
+// helpers
+const A=(el,kf,o)=>el.animate(kf,Object.assign({fill:"both"},o));
+function txt(cls,text,style){const e=document.createElement("div");e.className="t flow "+cls;e.textContent=text;Object.assign(e.style,style);streams.appendChild(e);return e}
+function pulse(delay){A(heart,[{transform:"scale(1)"},{transform:"scale(1.14)"},{transform:"scale(1)"}],{duration:420,delay,easing:"ease-out",fill:"none"})}
+let lvlNow=0;
+function setLevel(v,dur=0,delay=0){A(lvl,[{transform:`scaleY(${lvlNow})`},{transform:`scaleY(${v})`}],{duration:dur,delay,easing:"ease-in-out"});lvlNow=v}
+let raf=[];
+function countTo(el,from,to,dur,suffix=""){const t0=performance.now(),mine=stage.dataset.step;
+  (function f(t){const k=Math.min(1,Math.max(0,(t-t0)/dur));el.textContent=Math.round(from+(to-from)*k).toLocaleString()+suffix;
+    if(k<1&&stage.dataset.step===mine)raf.push(requestAnimationFrame(f))})(t0)}
+// words travel from the left edge into the core; each arrival makes the core pulse
+function flowIn(words,gap,startY=.12){const W=stage.clientWidth,H=stage.clientHeight;
+  return words.map((w,i)=>{const e=txt("",w,{left:(W*(.03+(i%2)*.05))+"px",top:(H*(startY+((i*.37)%.66)))+"px"});
+    const dx=Math.max(W*.5-30-e.offsetLeft-e.offsetWidth,10),dy=H*.47-e.offsetTop,delay=i*gap;
+    A(e,[{opacity:0,transform:"translate(0,0) scale(1)"},{opacity:1,offset:.2},{opacity:.9,offset:.75},{opacity:0,transform:`translate(${dx}px,${dy}px) scale(.6)`}],{duration:1900,delay,easing:"ease-in"});
+    pulse(delay+1750);return{e,arrive:delay+1800}})}
+function out(word,delay,y){const W=stage.clientWidth,H=stage.clientHeight;
+  const e=txt("g",word,{left:(W*.5+84)+"px",top:(H*y)+"px"});
+  A(e,[{opacity:0,transform:"translateX(-46px)"},{opacity:1,transform:"translateX(0)"}],{duration:700,delay,easing:"ease-out"});return e}
 
-function txt(cls,text,style){const e=document.createElement("div");e.className="t "+cls;e.textContent=text;Object.assign(e.style,style);return e}
-// words travel into the ring from the left (inputs) or out of it to the right (results)
-function flowIn(words,gap){const W=stage.clientWidth,H=stage.clientHeight;
-  words.forEach((w,i)=>{const e=txt("flow-in",w,{left:(W*(.03+(i%2)*.05))+"px",top:(H*(.12+((i*.37)%.7)))+"px"});streams.appendChild(e);
-    const dx=W*.5-78-e.offsetLeft-e.offsetWidth,dy=H*.47-e.offsetTop;
-    e.animate([{opacity:0,transform:"translate(0,0)"},{opacity:1,offset:.2},{opacity:.9,offset:.7},{opacity:0,transform:`translate(${Math.max(dx,10)}px,${dy}px)`}],
-      {duration:2200,delay:i*gap*1000,fill:"both",easing:"ease-in"})})}
-function flowOut(words,start){const W=stage.clientWidth,H=stage.clientHeight;
-  words.forEach((w,i)=>{const e=txt("flow-out g",w,{left:(W*.5+82)+"px",top:(H*(.3+i*.14))+"px"});streams.appendChild(e);
-    e.animate([{opacity:0,transform:"translateX(-40px)"},{opacity:1,transform:"translateX(0)"}],
-      {duration:900,delay:(start+i*.7)*1000,fill:"both",easing:"ease-out"})})}
-let cntTimer=null,typeTimer=null;
+let typeTimer=null;
 const SCENE={
-  3:()=>flowIn(["website","prices","unit sizes","FAQs","socials","reviews"],.35),
-  5:()=>{const s=$("s5");s.innerHTML="";
-    const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");svg.setAttribute("class","wires");
-    svg.setAttribute("viewBox","0 0 100 100");svg.setAttribute("preserveAspectRatio","none");
-    const L=["phone","WhatsApp","email","your software"];
-    L.forEach((l,i)=>{const y=22+i*19;
-      const p=document.createElementNS(svg.namespaceURI,"path");p.setAttribute("d",`M60 50 C66 50 66 ${y} 71 ${y}`);
-      p.setAttribute("vector-effect","non-scaling-stroke");p.style.animationDelay=(i*.35)+"s";svg.appendChild(p);
-      s.appendChild(txt("chan g",l,{left:"72%",top:`calc(${y}% - 8px)`,animationDelay:(i*.35+.6)+"s"}))});
-    s.prepend(svg)},
-  6:()=>flowIn(["call transcripts","price lists","FAQs","company documents","past emails","move-in scripts","insurance terms"],.3),
-  7:()=>{flowIn(["how big is a 10x10?","too expensive","do you have 24h access?","is there a lift?","can I move in today?"],.45);
-    flowOut(["handled","handled","handled"],.9);
-    let n=0;cntTimer=setInterval(()=>{n=Math.min(1000,n+23);$("cnt").textContent=n.toLocaleString();if(n>=1000)clearInterval(cntTimer)},50)},
-  8:()=>{const msg="note: always offer a tour before quoting a price";let k=0;$("typed").textContent="";$("ok").classList.remove("show");
-    typeTimer=setInterval(()=>{$("typed").textContent=msg.slice(0,++k);if(k>=msg.length){clearInterval(typeTimer);$("ok").classList.add("show")}},45)},
-  9:()=>{flowIn(["how big is a 10x10?","do you have 24h access?","is there a lift?"],.6);flowOut(["unit reserved","payment link sent"],1.2)}
+  1:()=>{const l=$("lst");l.children[10].classList.remove("landed");
+    A(l,[{transform:"translateY(0)"},{transform:"translateY(-176px)"}],{duration:2000,easing:"cubic-bezier(.15,.7,.2,1)"})
+      .finished.then(()=>l.children[10].classList.add("landed")).catch(()=>{})},
+  2:()=>{A(document.querySelector(".ring"),[{opacity:0,transform:"scale(.6)"},{opacity:1,transform:"scale(1.06)",offset:.65},{transform:"scale(1)"}],{duration:1100,easing:"ease-out",fill:"none"});
+    A($("shell"),[{strokeDashoffset:390},{strokeDashoffset:0}],{duration:1400,delay:300,easing:"ease-in-out"})},
+  3:()=>{flowIn(["website","prices","FAQs","socials","unit sizes"],380);setLevel(.3,2600,900);countTo($("k3"),0,30,3200,"%")},
+  4:()=>{A($("env"),[{opacity:0,transform:"translate(0,0)"},{opacity:1,offset:.15},{opacity:1,transform:"translate(118px,-22px)"}],{duration:1500,delay:300,easing:"ease-in-out"});
+    A($("bubble"),[{opacity:0,transform:"translateY(4px)"},{opacity:1,transform:"translateY(0)"}],{duration:450,delay:1750})},
+  5:()=>{const s=$("s5");s.innerHTML="";const NS="http://www.w3.org/2000/svg";
+    const svg=document.createElementNS(NS,"svg");svg.setAttribute("class","wires");svg.setAttribute("viewBox","0 0 100 100");svg.setAttribute("preserveAspectRatio","none");s.appendChild(svg);
+    ["phone","WhatsApp","email","software"].forEach((l,i)=>{const y=22+i*19;
+      const p=document.createElementNS(NS,"path");p.setAttribute("d",`M60 50 C66 50 66 ${y} 71 ${y}`);p.setAttribute("vector-effect","non-scaling-stroke");
+      p.setAttribute("pathLength","1");p.style.strokeDasharray="1";svg.appendChild(p);
+      A(p,[{strokeDashoffset:1},{strokeDashoffset:0}],{duration:700,delay:i*380,easing:"ease-out"});
+      const t=document.createElement("div");t.className="t g";t.textContent="✓ "+l;Object.assign(t.style,{left:"72%",top:`calc(${y}% - 8px)`});s.appendChild(t);
+      A(t,[{opacity:0},{opacity:1}],{duration:350,delay:i*380+600});pulse(i*380+650)})},
+  6:()=>{flowIn(["call transcripts","price lists","company documents","past emails","move-in scripts","insurance terms"],330);
+    setLevel(.85,2600,1300);countTo($("k6"),30,85,3600,"%")},
+  7:()=>{const qs=["too expensive","do you have 24h access?","is there a lift?","can I move in today?"];
+    flowIn(qs,650,.16).forEach((q,i)=>out("✓ handled",q.arrive+80,.16+((i*.37)%.66)));
+    countTo($("cnt"),0,1000,3700)},
+  8:()=>{const msg="note: always offer a tour before quoting";let k=0;$("typed").textContent="";$("ok").classList.remove("show");
+    typeTimer=setInterval(()=>{if(!playing||hover)return;$("typed").textContent=msg.slice(0,++k);if(k>=msg.length){clearInterval(typeTimer);$("ok").classList.add("show");pulse(0)}},48)},
+  9:()=>{flowIn(["how big is a 10x10?","do you have 24h access?","is there a lift?"],700,.18).forEach((q,i)=>{
+      if(i<2)out(["unit reserved","payment link sent"][i],q.arrive+100,.3+i*.2)})}
 };
+const LEVEL=[0,0,0,.3,.3,.3,.85,.85,.85];
 
-let cur=0,timer=null;
+let cur=0,elapsed=0,playing=true,hover=false,last=performance.now();
 function show(i){
-  cur=(i+N)%N;const step=cur+1;
-  clearInterval(cntTimer);clearInterval(typeTimer);streams.innerHTML="";$("cnt").textContent="0";
+  cur=(i+N)%N;elapsed=0;const step=cur+1;
+  clearInterval(typeTimer);raf.forEach(cancelAnimationFrame);raf=[];
+  stage.getAnimations({subtree:true}).forEach(a=>{if(!(a instanceof CSSAnimation))a.cancel()});streams.innerHTML="";
   stage.dataset.step=step;
-  const ring=stage.querySelector(".ring");ring.style.animation="none";void ring.offsetWidth;ring.style.animation="";
-  document.querySelectorAll(".scene").forEach(sc=>{const on=+sc.dataset.s===step;sc.classList.remove("on");
-    if(on){sc.querySelectorAll("*").forEach(el=>{el.style.animationName="none";void el.offsetWidth;el.style.animationName=""});sc.classList.add("on")}});
+  lvlNow=LEVEL[cur];lvl.style.transform=`scaleY(${lvlNow})`;
+  document.querySelectorAll(".scene").forEach(sc=>sc.classList.toggle("on",+sc.dataset.s===step));
   if(SCENE[step])SCENE[step]();
+  if(!playing||hover)stage.getAnimations({subtree:true}).forEach(a=>a.pause());
   items.forEach((li,j)=>{li.classList.toggle("done",j<cur);li.classList.toggle("cur",j===cur)});
-  const a=items[0],b=items[cur];$("fill").style.height=(b.offsetTop+b.offsetHeight/2-a.offsetTop-6)+"px";
-  $("desc").textContent=S[cur].d;$("bar").style.width=((cur+1)/N*100)+"%";
+  const a=items[0],b=items[cur];$("fill").style.height=Math.max(0,b.offsetTop+b.offsetHeight/2-a.offsetTop-a.offsetHeight/2)+"px";
+  segs.forEach((g,j)=>g.style.width=j<cur?"100%":"0");
+  $("desc").textContent=S[cur].d;
+  $("mtitle").innerHTML=`<span>${step}/${N} · ${PH[S[cur].ph].toUpperCase()}</span>${S[cur].t}${S[cur].you?'<span class="you">you</span>':""}`;
 }
-function start(){stop();timer=setInterval(()=>show(cur+1),3600);$("play").textContent="Pause"}
-function stop(){clearInterval(timer);timer=null;$("play").textContent="Play"}
-$("play").onclick=()=>timer?stop():start();
+function tick(t){const dt=t-last;last=t;
+  if(playing&&!hover){elapsed+=dt;segs[cur].style.width=Math.min(100,elapsed/DUR*100)+"%";if(elapsed>=DUR)show(cur+1)}
+  requestAnimationFrame(tick)}
+function setRunning(){const run=playing&&!hover;stage.getAnimations({subtree:true}).forEach(a=>run?a.play():a.pause());
+  $("play").textContent=playing?"❚❚ pause":"▶ play"}
+$("play").onclick=()=>{playing=!playing;setRunning()};
+stage.onmouseenter=()=>{hover=true;setRunning()};stage.onmouseleave=()=>{hover=false;setRunning()};
+
 const q=new URLSearchParams(location.search).get("step");
-show(q?(+q-1):0);
-if(!q&&!matchMedia("(prefers-reduced-motion: reduce)").matches)start();else stop();
+if(q||matchMedia("(prefers-reduced-motion: reduce)").matches){playing=false}
+show(q?(+q-1):0);setRunning();requestAnimationFrame(tick);
 </script>
 </body></html>
